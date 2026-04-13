@@ -1,2 +1,3 @@
-coursera-assets/
+coursera-assets/**/*
+!coursera-assets/**/.gitkeep
 coursera-output/
