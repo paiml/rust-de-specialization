@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="rust" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#dea584;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#f74c00;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="data" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1f6feb;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <!-- Grid pattern -->
+  <g opacity="0.08" stroke="#58a6ff" stroke-width="0.5">
+    <line x1="0" y1="60" x2="1200" y2="60"/>
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="180" x2="1200" y2="180"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="200" y1="0" x2="200" y2="300"/>
+    <line x1="400" y1="0" x2="400" y2="300"/>
+    <line x1="600" y1="0" x2="600" y2="300"/>
+    <line x1="800" y1="0" x2="800" y2="300"/>
+    <line x1="1000" y1="0" x2="1000" y2="300"/>
+  </g>
+  <!-- Gear icon (Rust) -->
+  <g transform="translate(100, 150)" fill="none" stroke="url(#rust)" stroke-width="4" opacity="0.7">
+    <circle r="28"/>
+    <circle r="14"/>
+    <line x1="0" y1="-38" x2="0" y2="-22"/>
+    <line x1="0" y1="22" x2="0" y2="38"/>
+    <line x1="-38" y1="0" x2="-22" y2="0"/>
+    <line x1="22" y1="0" x2="38" y2="0"/>
+    <line x1="-27" y1="-27" x2="-16" y2="-16"/>
+    <line x1="16" y1="16" x2="27" y2="27"/>
+    <line x1="-27" y1="27" x2="-16" y2="16"/>
+    <line x1="16" y1="-16" x2="27" y2="-27"/>
+  </g>
+  <!-- Pipeline arrows -->
+  <g stroke="url(#data)" stroke-width="3" fill="none" opacity="0.5">
+    <path d="M170 150 L250 150"/>
+    <path d="M350 150 L430 150"/>
+    <path d="M530 150 L610 150"/>
+    <path d="M710 150 L790 150"/>
+    <path d="M890 150 L970 150"/>
+  </g>
+  <!-- Phase nodes -->
+  <g font-family="monospace" font-size="11" fill="#8b949e" text-anchor="middle">
+    <rect x="250" y="130" width="100" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="300" y="155" fill="#dea584">SQLite</text>
+    <rect x="430" y="130" width="100" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="480" y="155" fill="#dea584">ETL</text>
+    <rect x="610" y="130" width="100" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="660" y="155" fill="#58a6ff">sqlx</text>
+    <rect x="790" y="130" width="100" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="840" y="155" fill="#58a6ff">Polars</text>
+    <rect x="970" y="130" width="100" height="40" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+    <text x="1020" y="155" fill="#58a6ff">Arrow</text>
+  </g>
+  <!-- Title -->
+  <text x="600" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="#e6edf3" text-anchor="middle">Rust for Data Engineering</text>
+  <text x="600" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#8b949e" text-anchor="middle">7-Course Specialization · Fast, Reliable &amp; Correct Data Pipelines</text>
+  <!-- Bottom tag -->
+  <text x="600" y="270" font-family="monospace" font-size="12" fill="#484f58" text-anchor="middle">paiml/rust-de-specialization</text>
+</svg>

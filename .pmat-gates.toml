@@ -1,0 +1,4 @@
+[gates]
+lint = true
+test = true
+coverage_min = 90

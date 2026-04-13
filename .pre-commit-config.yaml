@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: lint
+        name: Lint markdown
+        entry: make lint
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: test
+        name: Validate capstones
+        entry: make test
+        language: system
+        pass_filenames: false
+        always_run: true

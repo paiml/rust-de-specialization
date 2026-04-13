@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200">
+  <defs>
+    <linearGradient id="capbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="200" fill="url(#capbg)"/>
+  <!-- Decorative lines -->
+  <g opacity="0.15" stroke="#f74c00" stroke-width="1">
+    <line x1="50" y1="0" x2="50" y2="200"/>
+    <line x1="1150" y1="0" x2="1150" y2="200"/>
+  </g>
+  <g opacity="0.08" stroke="#58a6ff" stroke-width="0.5">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+  </g>
+  <!-- 7 course dots -->
+  <g fill="none" stroke-width="2">
+    <circle cx="300" cy="130" r="8" stroke="#dea584" fill="#dea584" fill-opacity="0.25"/>
+    <circle cx="400" cy="130" r="8" stroke="#dea584" fill="#dea584" fill-opacity="0.25"/>
+    <circle cx="500" cy="130" r="8" stroke="#f74c00" fill="#f74c00" fill-opacity="0.25"/>
+    <circle cx="600" cy="130" r="8" stroke="#f74c00" fill="#f74c00" fill-opacity="0.25"/>
+    <circle cx="700" cy="130" r="8" stroke="#58a6ff" fill="#58a6ff" fill-opacity="0.25"/>
+    <circle cx="800" cy="130" r="8" stroke="#58a6ff" fill="#58a6ff" fill-opacity="0.25"/>
+    <circle cx="900" cy="130" r="8" stroke="#1f6feb" fill="#1f6feb" fill-opacity="0.25"/>
+    <line x1="308" y1="130" x2="392" y2="130" stroke="#30363d" stroke-width="1.5"/>
+    <line x1="408" y1="130" x2="492" y2="130" stroke="#30363d" stroke-width="1.5"/>
+    <line x1="508" y1="130" x2="592" y2="130" stroke="#30363d" stroke-width="1.5"/>
+    <line x1="608" y1="130" x2="692" y2="130" stroke="#30363d" stroke-width="1.5"/>
+    <line x1="708" y1="130" x2="792" y2="130" stroke="#30363d" stroke-width="1.5"/>
+    <line x1="808" y1="130" x2="892" y2="130" stroke="#30363d" stroke-width="1.5"/>
+  </g>
+  <!-- Labels -->
+  <g font-family="monospace" font-size="9" fill="#484f58" text-anchor="middle">
+    <text x="300" y="158">C1</text>
+    <text x="400" y="158">C2</text>
+    <text x="500" y="158">C3</text>
+    <text x="600" y="158">C4</text>
+    <text x="700" y="158">C5</text>
+    <text x="800" y="158">C6</text>
+    <text x="900" y="158">C7</text>
+  </g>
+  <!-- Title -->
+  <text x="600" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="700" fill="#e6edf3" text-anchor="middle">Capstone Projects</text>
+  <text x="600" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#8b949e" text-anchor="middle">Hands-on portfolio projects for each course</text>
+</svg>
