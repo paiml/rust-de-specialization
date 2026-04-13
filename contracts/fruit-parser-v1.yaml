@@ -1,0 +1,69 @@
+metadata:
+  version: 1.0.0
+  description: "Course 1: Fruit CSV parser — ownership, borrowing, iterators, Result"
+  references:
+  - "Rust API Guidelines: https://rust-lang.github.io/api-guidelines/"
+equations:
+  parse_fruit:
+    formula: "parse_line(line: &str) -> Result<Fruit, ParseError>"
+    domain: "CSV line with name, price, category fields"
+    invariants:
+    - "Ok(fruit) implies fruit.name is non-empty"
+    - "Ok(fruit) implies fruit.price_cents > 0"
+    - "Err(e) preserves the offending field name"
+    - "No panics on any input (including empty string)"
+    preconditions:
+    - "line is a valid UTF-8 string"
+    postconditions:
+    - "Ok(Fruit) has all three fields populated"
+    - "Err(ParseError) names the failing field"
+    lean_theorem: Theorems.Fruit_Parser
+  parse_batch:
+    formula: "parse_csv(input: &str) -> (Vec<Fruit>, Vec<ParseError>)"
+    domain: "Multi-line CSV body (no header)"
+    invariants:
+    - "ok.len() + err.len() == input.lines().count()"
+    - "No data loss — every non-empty line produces exactly one Ok or one Err"
+    preconditions:
+    - "input may contain zero or more newline-delimited lines"
+    postconditions:
+    - "All Ok values satisfy parse_fruit postconditions"
+    lean_theorem: Theorems.Fruit_Batch
+  sum_by_category:
+    formula: "sum_by_category(fruits: &[Fruit]) -> Vec<(String, u64)>"
+    domain: "Aggregation over fruit price_cents grouped by category"
+    invariants:
+    - "Total across all categories == fruits.iter().map(|f| f.price_cents).sum()"
+    - "Output is sorted by category name (BTreeMap)"
+    preconditions:
+    - "fruits slice may be empty"
+    postconditions:
+    - "Each category appears exactly once"
+    lean_theorem: Theorems.Fruit_Aggregate
+proof_obligations:
+- type: invariant
+  property: parse correctness and totality
+- type: invariant
+  property: aggregation sum preservation
+falsification_tests:
+- id: FALSIFY-FP-001
+  rule: parse_fruit contract
+  prediction: Empty string returns Err(MissingField)
+  if_fails: Parser accepts invalid input
+- id: FALSIFY-FP-002
+  rule: parse_batch contract
+  prediction: ok.len() + err.len() == line count
+  if_fails: Data loss in batch parsing
+kani_harnesses:
+- id: KANI-FP-001
+  obligation: parse correctness
+  bound: 8
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FP-001
+  name: fruit-parser-v1 Contract
+  description: Quality gate for Course 1 fruit CSV parser
+  checks:
+  - validation
+  - falsification

@@ -1,3 +1,7 @@
 coursera-assets/**/*
 !coursera-assets/**/.gitkeep
 coursera-output/
+target/
+.pmat/
+.pmat-metrics/
+.pmat-work/

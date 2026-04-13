@@ -1,0 +1,68 @@
+metadata:
+  version: 1.0.0
+  description: "Course 4: Fruit order system — async SQL with sqlx, pooling, transactions"
+  references:
+  - "sqlx docs: https://docs.rs/sqlx/latest/sqlx/"
+equations:
+  create_order:
+    formula: "create_order(pool, items) -> Result<OrderId, OrderError>"
+    domain: "Atomically insert an order with line items into SQLite via sqlx"
+    invariants:
+    - "Returned OrderId > 0"
+    - "Order total_cents == sum(item.price_cents * item.quantity)"
+    - "Empty items list returns Err(EmptyOrder)"
+    preconditions:
+    - "pool is connected with migrations applied"
+    - "All items reference valid fruit_ids"
+    postconditions:
+    - "Order and all line items are queryable after commit"
+    lean_theorem: Theorems.Fruit_Order
+  get_order:
+    formula: "get_order(pool, id) -> Result<Option<Order>, OrderError>"
+    domain: "Fetch order with line items by OrderId"
+    invariants:
+    - "Ok(Some(order)) implies order.items.len() > 0"
+    - "order.total_cents == sum of line item totals"
+    preconditions:
+    - "id > 0"
+    postconditions:
+    - "Returned order matches stored state exactly"
+    lean_theorem: Theorems.Fruit_GetOrder
+  migrate:
+    formula: "run_migrations(pool) -> Result<(), OrderError>"
+    domain: "Apply schema migrations idempotently"
+    invariants:
+    - "Calling migrate twice is a no-op (idempotent)"
+    - "After migrate, all required tables exist"
+    preconditions:
+    - "pool is connected"
+    postconditions:
+    - "fruits, orders, order_items tables exist with correct schema"
+    lean_theorem: Theorems.Fruit_Migrate
+proof_obligations:
+- type: invariant
+  property: order total consistency
+- type: invariant
+  property: transaction atomicity
+falsification_tests:
+- id: FALSIFY-FO-001
+  rule: create_order contract
+  prediction: Empty items returns Err(EmptyOrder)
+  if_fails: Empty order created
+- id: FALSIFY-FO-002
+  rule: create_order contract
+  prediction: Total matches line item sum
+  if_fails: Order total inconsistency
+kani_harnesses:
+- id: KANI-FO-001
+  obligation: order total consistency
+  bound: 8
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FO-001
+  name: fruit-orders-v1 Contract
+  description: Quality gate for Course 4 fruit order system
+  checks:
+  - validation
+  - falsification

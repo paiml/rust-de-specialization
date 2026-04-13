@@ -1,0 +1,70 @@
+metadata:
+  version: 1.0.0
+  description: "Course 2: Fruit SQLite inventory — CRUD, transactions, migrations"
+  references:
+  - "rusqlite docs: https://docs.rs/rusqlite/latest/rusqlite/"
+equations:
+  create_fruit:
+    formula: "insert_fruit(conn, fruit) -> Result<i64, InventoryError>"
+    domain: "Insert a Fruit row into SQLite, return rowid"
+    invariants:
+    - "Returned rowid > 0"
+    - "Duplicate name returns Err(DuplicateName)"
+    - "price_cents <= 0 returns Err(InvalidPrice)"
+    preconditions:
+    - "conn is an open SQLite connection with schema migrated"
+    - "fruit.name is non-empty"
+    postconditions:
+    - "Ok(rowid) implies SELECT WHERE rowid returns the inserted fruit"
+    lean_theorem: Theorems.Fruit_Insert
+  read_fruit:
+    formula: "get_fruit(conn, id) -> Result<Option<Fruit>, InventoryError>"
+    domain: "Fetch a single fruit by rowid"
+    invariants:
+    - "Ok(Some(f)) implies f.id == id"
+    - "Ok(None) implies no row with that id exists"
+    preconditions:
+    - "id > 0"
+    postconditions:
+    - "Returned Fruit fields match stored values exactly"
+    lean_theorem: Theorems.Fruit_Read
+  bulk_import:
+    formula: "bulk_import(conn, fruits) -> Result<usize, InventoryError>"
+    domain: "Transactional batch insert of multiple fruits"
+    invariants:
+    - "Either all rows inserted or none (atomic transaction)"
+    - "Ok(n) implies n == fruits.len()"
+    - "Err implies zero rows were committed"
+    preconditions:
+    - "fruits is non-empty"
+    postconditions:
+    - "On success, all fruits are queryable"
+    - "On failure, database state unchanged"
+    lean_theorem: Theorems.Fruit_Bulk
+proof_obligations:
+- type: invariant
+  property: CRUD correctness
+- type: invariant
+  property: transaction atomicity
+falsification_tests:
+- id: FALSIFY-FI-001
+  rule: bulk_import contract
+  prediction: Invalid row rolls back entire transaction
+  if_fails: Partial commit on error
+- id: FALSIFY-FI-002
+  rule: create_fruit contract
+  prediction: Duplicate name returns Err
+  if_fails: Silent overwrite
+kani_harnesses:
+- id: KANI-FI-001
+  obligation: CRUD correctness
+  bound: 8
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FI-001
+  name: fruit-inventory-v1 Contract
+  description: Quality gate for Course 2 fruit SQLite inventory
+  checks:
+  - validation
+  - falsification

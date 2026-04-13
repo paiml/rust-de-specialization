@@ -1,0 +1,136 @@
+version: 1.0.0
+target_crate: rust-de-specialization
+bindings:
+# Course 1: Rust from Zero — fruit parser
+- contract: fruit-parser-v1.yaml
+  equation: parse_fruit
+  module_path: c1_rust_from_zero
+  function: parse_line
+  signature: "fn parse_line(line: &str) -> Result<Fruit, ParseError>"
+  status: implemented
+- contract: fruit-parser-v1.yaml
+  equation: parse_batch
+  module_path: c1_rust_from_zero
+  function: parse_csv
+  signature: "fn parse_csv(input: &str) -> (Vec<Fruit>, Vec<ParseError>)"
+  status: implemented
+- contract: fruit-parser-v1.yaml
+  equation: sum_by_category
+  module_path: c1_rust_from_zero
+  function: sum_by_category
+  signature: "fn sum_by_category(fruits: &[Fruit]) -> Vec<(String, u64)>"
+  status: implemented
+
+# Course 2: SQLite for Rust — fruit inventory
+- contract: fruit-inventory-v1.yaml
+  equation: create_fruit
+  module_path: c2_sqlite_rust
+  function: insert_fruit
+  signature: "fn insert_fruit(conn: &Connection, fruit: &NewFruit) -> Result<i64, InventoryError>"
+  status: implemented
+- contract: fruit-inventory-v1.yaml
+  equation: read_fruit
+  module_path: c2_sqlite_rust
+  function: get_fruit
+  signature: "fn get_fruit(conn: &Connection, id: i64) -> Result<Option<Fruit>, InventoryError>"
+  status: implemented
+- contract: fruit-inventory-v1.yaml
+  equation: bulk_import
+  module_path: c2_sqlite_rust
+  function: bulk_import
+  signature: "fn bulk_import(conn: &mut Connection, fruits: &[NewFruit]) -> Result<usize, InventoryError>"
+  status: implemented
+
+# Course 3: ETL Pipelines — fruit ETL
+- contract: fruit-etl-v1.yaml
+  equation: extract
+  module_path: c3_etl_pipelines
+  function: extract_csv
+  signature: "fn extract_csv(input: &str) -> Result<Vec<RawFruit>, EtlError>"
+  status: implemented
+- contract: fruit-etl-v1.yaml
+  equation: transform
+  module_path: c3_etl_pipelines
+  function: transform
+  signature: "fn transform(raw: Vec<RawFruit>) -> (Vec<EnrichedFruit>, Vec<EtlError>)"
+  status: implemented
+- contract: fruit-etl-v1.yaml
+  equation: load
+  module_path: c3_etl_pipelines
+  function: load_json
+  signature: "fn load_json(fruits: &[EnrichedFruit]) -> Result<String, EtlError>"
+  status: implemented
+
+# Course 4: SQL Databases — fruit orders
+- contract: fruit-orders-v1.yaml
+  equation: create_order
+  module_path: c4_sql_databases
+  function: create_order
+  signature: "async fn create_order(pool: &SqlitePool, items: &[OrderItem]) -> Result<i64, OrderError>"
+  status: implemented
+- contract: fruit-orders-v1.yaml
+  equation: get_order
+  module_path: c4_sql_databases
+  function: get_order
+  signature: "async fn get_order(pool: &SqlitePool, id: i64) -> Result<Option<Order>, OrderError>"
+  status: implemented
+- contract: fruit-orders-v1.yaml
+  equation: migrate
+  module_path: c4_sql_databases
+  function: run_migrations
+  signature: "async fn run_migrations(pool: &SqlitePool) -> Result<(), OrderError>"
+  status: implemented
+
+# Course 5: Polars — fruit analytics
+- contract: fruit-analytics-v1.yaml
+  equation: lazy_pipeline
+  module_path: c5_polars
+  function: analyze_sales
+  signature: "fn analyze_sales(df: LazyFrame) -> Result<DataFrame, AnalyticsError>"
+  status: implemented
+- contract: fruit-analytics-v1.yaml
+  equation: top_fruits
+  module_path: c5_polars
+  function: top_fruits
+  signature: "fn top_fruits(df: LazyFrame, n: u32) -> Result<DataFrame, AnalyticsError>"
+  status: implemented
+
+# Course 6: DuckDB — fruit warehouse
+- contract: fruit-warehouse-v1.yaml
+  equation: load_and_query
+  module_path: c6_duckdb
+  function: query_warehouse
+  signature: "fn query_warehouse(conn: &Connection, sql: &str) -> Result<Vec<WarehouseRow>, WarehouseError>"
+  status: implemented
+- contract: fruit-warehouse-v1.yaml
+  equation: window_ranking
+  module_path: c6_duckdb
+  function: rank_by_revenue
+  signature: "fn rank_by_revenue(conn: &Connection) -> Result<Vec<RankedFruit>, WarehouseError>"
+  status: implemented
+- contract: fruit-warehouse-v1.yaml
+  equation: rollup_summary
+  module_path: c6_duckdb
+  function: category_rollup
+  signature: "fn category_rollup(conn: &Connection) -> Result<Vec<RollupRow>, WarehouseError>"
+  status: implemented
+
+# Course 7: Provable Contracts — fruit pipeline
+- contract: fruit-pipeline-v1.yaml
+  equation: typestate_transition
+  module_path: c7_provable_contracts::pipeline
+  function: validate
+  signature: "fn validate(self) -> Result<Pipeline<Validated>, PipelineError>"
+  status: implemented
+- contract: fruit-pipeline-v1.yaml
+  equation: newtype_safety
+  module_path: c7_provable_contracts::types
+  function: PriceCents::new
+  signature: "fn new(value: u64) -> Result<PriceCents, PipelineError>"
+  status: implemented
+- contract: fruit-pipeline-v1.yaml
+  equation: pipeline_invariant
+  module_path: c7_provable_contracts::pipeline
+  function: process
+  signature: "fn process(self) -> Result<Pipeline<Complete>, PipelineError>"
+  status: implemented

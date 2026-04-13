@@ -1,0 +1,10 @@
+[package]
+name = "c6-duckdb"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Course 6: Analytical SQL with DuckDB, window functions, OLAP"
+
+[dependencies]
+duckdb = { version = "1.2", features = ["bundled"] }
+thiserror = { workspace = true }

@@ -1,0 +1,11 @@
+[package]
+name = "c1-rust-from-zero"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Course 1: Ownership, borrowing, iterators, error handling"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }

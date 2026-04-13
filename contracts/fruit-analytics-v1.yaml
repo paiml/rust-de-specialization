@@ -1,0 +1,57 @@
+metadata:
+  version: 1.0.0
+  description: "Course 5: Fruit sales analytics — Polars lazy DataFrames"
+  references:
+  - "Polars user guide: https://docs.pola.rs/"
+equations:
+  lazy_pipeline:
+    formula: "analyze_sales(df: LazyFrame) -> Result<DataFrame, AnalyticsError>"
+    domain: "Filter, group, aggregate fruit sales with lazy evaluation"
+    invariants:
+    - "Output row count <= input row count (filter reduces)"
+    - "Group-by sum matches manual computation on unfiltered data subset"
+    - "Column names in output are a subset of input plus derived columns"
+    preconditions:
+    - "LazyFrame has columns: name, category, price_cents, quantity"
+    - "All price_cents values > 0"
+    postconditions:
+    - "Result DataFrame has columns: category, total_revenue, avg_price"
+    lean_theorem: Theorems.Fruit_Analytics
+  top_fruits:
+    formula: "top_fruits(df: LazyFrame, n: usize) -> Result<DataFrame, AnalyticsError>"
+    domain: "Rank fruits by total revenue descending, return top N"
+    invariants:
+    - "Output row count == min(n, distinct fruit count)"
+    - "Revenue values are monotonically non-increasing"
+    preconditions:
+    - "n > 0"
+    postconditions:
+    - "First row has the highest total revenue"
+    lean_theorem: Theorems.Fruit_TopN
+proof_obligations:
+- type: invariant
+  property: aggregation sum preservation
+- type: invariant
+  property: sort ordering
+falsification_tests:
+- id: FALSIFY-FA-001
+  rule: lazy_pipeline contract
+  prediction: Group-by total matches sum of filtered rows
+  if_fails: Aggregation loses or duplicates revenue
+- id: FALSIFY-FA-002
+  rule: top_fruits contract
+  prediction: Output is sorted descending by revenue
+  if_fails: Sort invariant violated
+kani_harnesses:
+- id: KANI-FA-001
+  obligation: aggregation sum preservation
+  bound: 8
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FA-001
+  name: fruit-analytics-v1 Contract
+  description: Quality gate for Course 5 fruit sales analytics
+  checks:
+  - validation
+  - falsification

@@ -1,2 +1,8 @@
 #!/bin/bash
-make check
+# Fast pre-commit: fmt + capstones + clippy + test (no coverage — that's CI)
+set -e
+cargo fmt --all -- --check
+make test-capstones
+make lint-contracts
+cargo clippy --workspace -- -D warnings
+cargo test --workspace

@@ -1,0 +1,68 @@
+metadata:
+  version: 1.0.0
+  description: "Course 3: Fruit ETL pipeline — CSV ingest, serde transform, JSON sink"
+  references:
+  - "csv crate: https://docs.rs/csv/latest/csv/"
+  - "serde: https://serde.rs/"
+equations:
+  extract:
+    formula: "extract_csv(reader) -> Result<Vec<RawFruit>, EtlError>"
+    domain: "Deserialize CSV rows into typed structs via serde"
+    invariants:
+    - "All returned records have non-empty name field"
+    - "Deserialization errors are collected, not panicked"
+    preconditions:
+    - "Reader provides valid UTF-8 CSV with header row"
+    postconditions:
+    - "Vec<RawFruit> contains only successfully deserialized rows"
+    lean_theorem: Theorems.Fruit_Extract
+  transform:
+    formula: "transform(raw: Vec<RawFruit>) -> (Vec<EnrichedFruit>, Vec<EtlError>)"
+    domain: "Validate, normalize, and enrich raw fruit records"
+    invariants:
+    - "ok.len() + err.len() == raw.len()"
+    - "EnrichedFruit.price_cents == (raw.price * 100).round()"
+    - "No floating-point currency in output (cents only)"
+    preconditions:
+    - "raw may contain invalid prices or empty names"
+    postconditions:
+    - "All EnrichedFruit have price_cents > 0 and non-empty name"
+    lean_theorem: Theorems.Fruit_Transform
+  load:
+    formula: "load_json(fruits: &[EnrichedFruit], writer) -> Result<usize, EtlError>"
+    domain: "Serialize enriched fruits to newline-delimited JSON"
+    invariants:
+    - "Ok(n) implies n == fruits.len()"
+    - "Each JSON line round-trips back to EnrichedFruit"
+    preconditions:
+    - "fruits is non-empty"
+    postconditions:
+    - "Writer contains n newline-delimited JSON objects"
+    lean_theorem: Theorems.Fruit_Load
+proof_obligations:
+- type: invariant
+  property: ETL totality (no data loss)
+- type: invariant
+  property: currency normalization (no floats in output)
+falsification_tests:
+- id: FALSIFY-FE-001
+  rule: transform contract
+  prediction: ok.len() + err.len() == raw.len()
+  if_fails: Data loss or duplication in transform stage
+- id: FALSIFY-FE-002
+  rule: load contract
+  prediction: JSON round-trip preserves all fields
+  if_fails: Serialization loses data
+kani_harnesses:
+- id: KANI-FE-001
+  obligation: ETL totality
+  bound: 8
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FE-001
+  name: fruit-etl-v1 Contract
+  description: Quality gate for Course 3 fruit ETL pipeline
+  checks:
+  - validation
+  - falsification

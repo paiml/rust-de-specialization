@@ -1,0 +1,78 @@
+metadata:
+  version: 1.0.0
+  description: "Course 7: Fruit processing pipeline — typestate, newtypes, phantom types, proptest"
+  references:
+  - "Rust API Guidelines: https://rust-lang.github.io/api-guidelines/"
+  - "Typestate pattern: https://cliffle.com/blog/rust-typestate/"
+equations:
+  typestate_transition:
+    formula: "Pipeline<S>.next() -> Pipeline<S::Next> where S: State"
+    domain: "Typestate machine: Configured → Validated → Processing → Complete"
+    invariants:
+    - "Invalid transitions are compile-time errors (not runtime)"
+    - "Each transition consumes self (no state reuse)"
+    - "Pipeline<Complete> cannot transition further"
+    preconditions:
+    - "Pipeline is in state S"
+    postconditions:
+    - "Pipeline is in state S::Next"
+    - "Previous state is unreachable"
+    lean_theorem: Theorems.Fruit_Typestate
+  newtype_safety:
+    formula: "PriceCents(u64) and Quantity(u32) are distinct types"
+    domain: "Newtypes preventing unit confusion in fruit pricing"
+    invariants:
+    - "PriceCents cannot be added to Quantity (compile error)"
+    - "PriceCents(0) is invalid — constructor returns Result"
+    - "Quantity(0) is valid (empty order line)"
+    preconditions:
+    - "Raw u64/u32 values from untrusted input"
+    postconditions:
+    - "Validated newtypes enforce domain invariants"
+    lean_theorem: Theorems.Fruit_Newtypes
+  pipeline_invariant:
+    formula: "output.total_items() == input.total_items() (no fruit lost in processing)"
+    domain: "Property-based test across random fruit batches"
+    invariants:
+    - "Processing preserves item count (no creation or destruction)"
+    - "Total revenue == sum(price_cents * quantity) for all items"
+    - "Category assignment is deterministic (same input → same output)"
+    preconditions:
+    - "Input batch has at least one fruit"
+    - "All prices > 0, all quantities >= 0"
+    postconditions:
+    - "Output batch satisfies all invariants from input"
+    lean_theorem: Theorems.Fruit_Pipeline_Invariant
+proof_obligations:
+- type: invariant
+  property: typestate compile-time enforcement
+- type: invariant
+  property: newtype unit safety
+- type: invariant
+  property: pipeline item count preservation
+falsification_tests:
+- id: FALSIFY-FPL-001
+  rule: newtype_safety contract
+  prediction: PriceCents(0) returns Err
+  if_fails: Zero-price fruit allowed
+- id: FALSIFY-FPL-002
+  rule: pipeline_invariant contract
+  prediction: Output count equals input count
+  if_fails: Pipeline drops or creates items
+- id: FALSIFY-FPL-003
+  rule: typestate_transition contract
+  prediction: Calling process() on Configured state fails to compile
+  if_fails: Invalid state transition allowed at runtime
+kani_harnesses:
+- id: KANI-FPL-001
+  obligation: pipeline item count preservation
+  bound: 16
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FPL-001
+  name: fruit-pipeline-v1 Contract
+  description: Quality gate for Course 7 fruit processing pipeline
+  checks:
+  - validation
+  - falsification

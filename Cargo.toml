@@ -1,0 +1,21 @@
+[workspace]
+resolver = "2"
+members = [
+    "demos/c1-rust-from-zero",
+    "demos/c2-sqlite-rust",
+    "demos/c3-etl-pipelines",
+    "demos/c4-sql-databases",
+    "demos/c5-polars",
+    "demos/c6-duckdb",
+    "demos/c7-provable-contracts",
+]
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/paiml/rust-de-specialization"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"

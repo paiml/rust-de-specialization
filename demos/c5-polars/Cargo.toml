@@ -1,0 +1,10 @@
+[package]
+name = "c5-polars"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Course 5: DataFrame analytics with Polars lazy evaluation"
+
+[dependencies]
+polars = { version = "0.46", features = ["lazy", "csv", "parquet", "dtype-struct"] }
+thiserror = { workspace = true }

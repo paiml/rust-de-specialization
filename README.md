@@ -1,5 +1,8 @@
 # Rust for Data Engineering
 
+[![CI](https://github.com/paiml/rust-de-specialization/actions/workflows/ci.yml/badge.svg)](https://github.com/paiml/rust-de-specialization/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 <p align="center">
   <img src="assets/hero.svg" alt="Rust for Data Engineering: 7-Course Specialization" width="100%"/>
 </p>

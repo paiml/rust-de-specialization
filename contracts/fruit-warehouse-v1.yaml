@@ -1,0 +1,69 @@
+metadata:
+  version: 1.0.0
+  description: "Course 6: Fruit warehouse analytics — DuckDB SQL, window functions, OLAP"
+  references:
+  - "DuckDB Rust API: https://docs.rs/duckdb/latest/duckdb/"
+equations:
+  load_and_query:
+    formula: "query_warehouse(conn, sql) -> Result<Vec<WarehouseRow>, WarehouseError>"
+    domain: "Execute analytical SQL over in-memory fruit warehouse tables"
+    invariants:
+    - "Result row count matches SQL semantics (no phantom rows)"
+    - "Column types match declared schema"
+    preconditions:
+    - "conn is open DuckDB connection with tables populated"
+    - "sql is a valid SELECT statement"
+    postconditions:
+    - "Vec<WarehouseRow> faithfully represents query result"
+    lean_theorem: Theorems.Fruit_Warehouse
+  window_ranking:
+    formula: "rank_by_revenue(conn) -> Result<Vec<RankedFruit>, WarehouseError>"
+    domain: "RANK() OVER (PARTITION BY category ORDER BY revenue DESC)"
+    invariants:
+    - "Output row count == input row count (window preserves cardinality)"
+    - "rank == 1 fruit has highest revenue in its category"
+    - "Ties produce equal rank values"
+    preconditions:
+    - "Warehouse table has columns: name, category, revenue"
+    postconditions:
+    - "Each row has rank >= 1"
+    - "Rows within same category are ordered by descending revenue"
+    lean_theorem: Theorems.Fruit_Ranking
+  rollup_summary:
+    formula: "category_rollup(conn) -> Result<Vec<RollupRow>, WarehouseError>"
+    domain: "GROUP BY ROLLUP(category) with SUM(revenue)"
+    invariants:
+    - "Grand total row (category=NULL) sum == sum of all category subtotals"
+    - "Row count == distinct_categories + 1 (for grand total)"
+    preconditions:
+    - "Warehouse table is non-empty"
+    postconditions:
+    - "Exactly one row with NULL category (the grand total)"
+    lean_theorem: Theorems.Fruit_Rollup
+proof_obligations:
+- type: invariant
+  property: window function cardinality preservation
+- type: invariant
+  property: rollup sum consistency
+falsification_tests:
+- id: FALSIFY-FW-001
+  rule: window_ranking contract
+  prediction: Row count preserved after window function
+  if_fails: Window function drops or duplicates rows
+- id: FALSIFY-FW-002
+  rule: rollup_summary contract
+  prediction: Grand total == sum of subtotals
+  if_fails: Rollup arithmetic error
+kani_harnesses:
+- id: KANI-FW-001
+  obligation: window function correctness
+  bound: 8
+  strategy: bounded_int
+  solver: cadical
+qa_gate:
+  id: F-FW-001
+  name: fruit-warehouse-v1 Contract
+  description: Quality gate for Course 6 fruit warehouse analytics
+  checks:
+  - validation
+  - falsification
