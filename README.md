@@ -17,14 +17,14 @@ and DataFrame analytics to compile-time correctness guarantees via provable cont
 | 3 | **ETL Pipelines with Rust** | Pipelines | csv, serde, tokio, reqwest | — | [Capstone](capstones/c03-capstone.md) |
 | 4 | **SQL Databases with Rust** | Production DB | sqlx | — | [Capstone](capstones/c04-capstone.md) |
 | 5 | **Polars from Zero** | Analytics | polars | — | [Capstone](capstones/c05-capstone.md) |
-| 6 | **Apache Arrow for Rust** | Interop | arrow-rs | — | [Capstone](capstones/c06-capstone.md) |
+| 6 | **DuckDB with Rust** | Analytics | duckdb | — | [Capstone](capstones/c06-capstone.md) |
 | 7 | **Design by Provable Contracts** | Correctness | std, type-system patterns | — | [Capstone](capstones/c07-capstone.md) |
 
 ## Learning Arc
 
 ```
-Language ──► Local DB ──► Pipelines ──► Production DB ──► Analytics ──► Interop ──► Correctness
-  (1)          (2)          (3)            (4)              (5)          (6)           (7)
+Language ──► Local DB ──► Pipelines ──► Production DB ──► Analytics ──► Analytics+ ──► Correctness
+  (1)          (2)          (3)            (4)              (5)           (6)            (7)
 ```
 
 | Phase | Course | Builds On | Unlocks |
@@ -34,7 +34,7 @@ Language ──► Local DB ──► Pipelines ──► Production DB ──�
 | Pipelines | 3 · ETL Pipelines with Rust | Rust basics + HTTP/async | Real-world data movement |
 | Production DB | 4 · SQL Databases with Rust | SQLite patterns + async (tokio) | Type-safe DB in services |
 | Analytics | 5 · Polars from Zero | ETL patterns + Parquet basics | Fast DataFrame analytics |
-| Interop | 6 · Apache Arrow for Rust | Polars + columnar concepts | Cross-engine zero-copy sharing |
+| Analytics | 6 · DuckDB with Rust | Polars + columnar concepts | Analytical SQL inside Rust processes |
 | Correctness | 7 · Design by Provable Contracts | Full Rust type system fluency | Compile-time pipeline guarantees |
 
 ## Installation
@@ -72,8 +72,8 @@ Every module ends with a **Critical Thinking Assessment** (quiz + role-play prac
 
 ## Instructors
 
-- **Noah Gift** — Founder, Pragmatic AI Labs · Duke University (Courses 3, 4, 6, 7)
-- **Alfredo Deza** — Author and content creator · Python, Rust, DevOps, ML (Courses 2, 5)
+- **Noah Gift** — Founder, Pragmatic AI Labs · Duke University (Courses 3, 4, 7)
+- **Alfredo Deza** — Author and content creator · Python, Rust, DevOps, ML (Courses 2, 5, 6)
 - **Liam Deza** — Rust educator (Course 1)
 
 ## License
