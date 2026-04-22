@@ -1,0 +1,91 @@
+version: 1
+lesson_id: "2.1.1"
+course_id: "c1-rust-from-zero"
+concept: "ownership_stack_heap_one_owner_drop"
+description: >
+  Lesson 2.1.1 Playground Proof: stack vs heap, single ownership, and
+  scope-exit Drop. Demonstrates three invariants in one snippet —
+  stack_size_i32() == 4, heap-backed String passed by value is dropped
+  exactly once at scope exit, and the caller can no longer access it
+  (enforced at compile time; the runtime check here is that the
+  function completes and Drop fires). Expected stdout
+  "ownership: 3/3 pass", exit 0.
+
+source:
+  inline: |
+    use std::mem::size_of;
+    use std::sync::atomic::{AtomicU64, Ordering};
+
+    static OWNER_DROPS: AtomicU64 = AtomicU64::new(0);
+
+    struct TrackedAlloc {
+        payload: String,
+    }
+
+    impl TrackedAlloc {
+        fn new(payload: &str) -> Self {
+            Self { payload: payload.to_owned() }
+        }
+        fn len(&self) -> usize {
+            self.payload.len()
+        }
+    }
+
+    impl Drop for TrackedAlloc {
+        fn drop(&mut self) {
+            OWNER_DROPS.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+
+    fn heap_backed_length(s: String) -> usize {
+        // Takes ownership. s is dropped when this function returns —
+        // the caller cannot use the original String after the call.
+        s.len()
+    }
+
+    fn main() {
+        let mut passed = 0usize;
+
+        // Invariant 1: i32 lives on the stack at a fixed size.
+        assert_eq!(size_of::<i32>(), 4);
+        passed += 1;
+
+        // Invariant 2: heap-backed String passed by value is consumed.
+        let hello = String::from("hello");
+        assert_eq!(heap_backed_length(hello), 5);
+        // `hello` is unusable here — ownership moved into the function.
+        passed += 1;
+
+        // Invariant 3: scope-exit fires Drop exactly once per owner.
+        let before = OWNER_DROPS.load(Ordering::SeqCst);
+        {
+            let owner = TrackedAlloc::new("owned");
+            assert_eq!(owner.len(), 5);
+        }
+        let delta = OWNER_DROPS.load(Ordering::SeqCst) - before;
+        assert_eq!(delta, 1);
+        passed += 1;
+
+        println!("ownership: {passed}/3 pass");
+    }
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "ownership: 3/3 pass"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
+  - "size_of::<i32>() == 4 — stack size is fixed at compile time"
+  - "heap_backed_length consumes its String argument"
+  - "TrackedAlloc Drop runs exactly once at scope exit"

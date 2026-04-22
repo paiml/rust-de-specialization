@@ -1,0 +1,76 @@
+version: 1
+lesson_id: "3.3.1"
+course_id: "c1-rust-from-zero"
+concept: "closures_fn_fnmut_fnonce_capture_traits"
+description: >
+  Lesson 3.3.1 Playground Proof: the three closure traits (Fn, FnMut,
+  FnOnce) each demonstrated with a canonical example. `make_adder`
+  implements Fn (pure, callable multiple times). `make_counter`
+  implements FnMut (mutates captured state across calls). `make_once`
+  implements FnOnce (consumes captured value on single call). Expected
+  stdout "closures: 3/3 pass", exit 0.
+
+source:
+  inline: |
+    fn make_adder(n: i32) -> impl Fn(i32) -> i32 {
+        move |x| n.saturating_add(x)
+    }
+
+    fn make_counter() -> impl FnMut() -> u32 {
+        let mut count: u32 = 0;
+        move || {
+            count += 1;
+            count
+        }
+    }
+
+    fn make_once(s: String) -> impl FnOnce() -> String {
+        move || s
+    }
+
+    fn main() {
+        let mut passed = 0usize;
+
+        // Invariant 1: Fn — pure, consistent across invocations.
+        let add5 = make_adder(5);
+        assert_eq!(add5(1), 6);
+        assert_eq!(add5(10), 15);
+        assert_eq!(add5(1), 6);
+        passed += 1;
+
+        // Invariant 2: FnMut — counter advances exactly once per call.
+        let mut counter = make_counter();
+        assert_eq!(counter(), 1);
+        assert_eq!(counter(), 2);
+        assert_eq!(counter(), 3);
+        passed += 1;
+
+        // Invariant 3: FnOnce — consumes captured String, returns it verbatim.
+        let once = make_once(String::from("alice"));
+        assert_eq!(once(), "alice");
+        // `once` cannot be called again — FnOnce consumed its captured state.
+        passed += 1;
+
+        println!("closures: {passed}/3 pass");
+    }
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "closures: 3/3 pass"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
+  - "make_adder returns a Fn closure (pure, re-callable)"
+  - "make_counter returns an FnMut closure (monotonic counter)"
+  - "make_once returns an FnOnce closure (single-call consuming)"
