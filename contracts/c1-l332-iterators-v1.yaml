@@ -1,0 +1,51 @@
+metadata:
+  version: 1.0.0
+  lesson: "3.3.2-iterators"
+  description: "Course 1 Lesson 3.3.2: Iterator pipelines — lazy adapters + eager consumers"
+  transcript_anchor: "adapters build a pipeline, consumers run it"
+  references:
+  - "The Rust Book §13.2 Processing a Series of Items with Iterators"
+  - "std::iter::Iterator"
+equations:
+  pipeline_oracle_equivalence:
+    formula: "for all n in 0..=50: pipeline(n) == eager_pipeline(n)"
+    domain: "n ∈ {0, 1, ..., 50}"
+    invariants:
+    - "filter-then-map-then-collect produces bit-identical output to the eager loop"
+    - "Ordering of elements is preserved"
+    - "Only even numbers in 1..=n appear, each squared"
+    preconditions:
+    - "n ≤ u32::MAX / 2 to avoid overflow in the square step"
+    postconditions:
+    - "Both functions produce the same Vec<u32> for every n in domain"
+  iter_borrow_preserves_vec:
+    formula: "iter_borrow_sum(v: &Vec<i32>) -> i32"
+    domain: "Any Vec<i32> where the sum fits in i32"
+    invariants:
+    - "Borrowing iteration does NOT consume the Vec"
+    - "Return value equals v.iter().sum()"
+    - "Caller's Vec is still usable after the call"
+    preconditions:
+    - "v.iter().sum::<i32>() does not overflow"
+    postconditions:
+    - "v retains all elements and length after the call"
+  lazy_adapters_no_execution:
+    formula: "filter + map with a side-effect counter that is NEVER incremented"
+    domain: "An adapter chain without a consumer"
+    invariants:
+    - "Without a terminal consumer (collect/for/sum), map/filter closures do not execute"
+    - "The side-effect counter remains at 0 after building the adapter chain"
+    preconditions:
+    - "None"
+    postconditions:
+    - "Counter observable as zero until consumer is invoked"
+  into_iter_consumes:
+    formula: "into_iter_sum(v: Vec<i32>) -> i32"
+    domain: "Any Vec<i32> where the sum fits in i32"
+    invariants:
+    - "Consumes the Vec (takes ownership)"
+    - "Return value equals the consumed elements summed"
+    preconditions:
+    - "v.iter().sum::<i32>() does not overflow"
+    postconditions:
+    - "Caller loses ownership of v (compile-time enforced)"

@@ -1,0 +1,42 @@
+metadata:
+  version: 1.0.0
+  lesson: "2.3.2-result-and-question-operator"
+  description: "Course 1 Lesson 2.3.2: Result<T, E> and the ? operator — recoverable errors the compiler enforces"
+  transcript_anchor: "recoverable errors in Rust use a type called Result"
+  references:
+  - "The Rust Book §9.2 Recoverable Errors with Result"
+  - "std::ops::Try, std::convert::From"
+equations:
+  parse_age:
+    formula: "parse_age(s: &str) -> Result<u32, ParseAgeError>"
+    domain: "Any &str"
+    invariants:
+    - "Ok(n) implies s parsed cleanly to a non-negative integer"
+    - "Err(ParseAgeError::NotANumber) preserves the offending input"
+    - "No panics on any input (including empty string, unicode, negative)"
+    preconditions:
+    - "s is valid UTF-8 (enforced by &str)"
+    postconditions:
+    - "Result has exactly one variant populated"
+  divide:
+    formula: "divide(n: u32, d: u32) -> Result<u32, DivisionError>"
+    domain: "Any (u32, u32)"
+    invariants:
+    - "Err(DivisionError::DivideByZero) iff d == 0"
+    - "Ok(q) iff d != 0 && q == n / d"
+    - "No panics on any input"
+    preconditions:
+    - "n, d are valid u32 values"
+    postconditions:
+    - "Return value uniquely determined by (n, d)"
+  chain_equivalence:
+    formula: "for all (s, d): chain_question(s, d) == chain_match(s, d)"
+    domain: "Cartesian product of &str × u32"
+    invariants:
+    - "? operator is semantically equivalent to nested match on Result"
+    - "From conversion auto-wraps ParseAgeError and DivisionError as AppError"
+    preconditions:
+    - "Both functions accept identical inputs"
+    postconditions:
+    - "Both functions produce byte-identical outputs for all inputs"
+    - "This equivalence is oracle-tested across a sample space of inputs"

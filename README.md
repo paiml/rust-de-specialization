@@ -15,7 +15,7 @@ and DataFrame analytics to compile-time correctness guarantees via provable cont
 
 | # | Course | Phase | Core Crates | Companion Repo | Capstone |
 |---|--------|-------|-------------|----------------|----------|
-| 1 | **Rust from Zero** | Language | std, cargo | — | [Capstone](capstones/c01-capstone.md) |
+| 1 | **Rust from Zero** | Language | std, cargo | — | [Capstone](capstones/c01-capstone.md) · [Playground Reading](capstones/c01-capstone-reading.md) |
 | 2 | **SQLite for Rust** | Local DB | rusqlite | — | [Capstone](capstones/c02-capstone.md) |
 | 3 | **ETL Pipelines with Rust** | Pipelines | csv, serde, tokio, reqwest | — | [Capstone](capstones/c03-capstone.md) |
 | 4 | **SQL Databases with Rust** | Production DB | sqlx | — | [Capstone](capstones/c04-capstone.md) |
@@ -64,6 +64,8 @@ make check         # Run lint + test
 </p>
 
 Each course includes a hands-on capstone project that integrates all modules into a realistic scenario. Completed capstones can be shared on LinkedIn as portfolio projects. See the [capstones/](capstones/) directory.
+
+Course 1 also ships a [**Playground Reading**](capstones/c01-capstone-reading.md) — a zero-install capstone that walks you through six lesson-aligned exercises on <https://play.rust-lang.org/> so you can master Rust fundamentals in the browser before tackling the full project capstone.
 
 ## Structure
 

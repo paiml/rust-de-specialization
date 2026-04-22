@@ -1,0 +1,41 @@
+metadata:
+  version: 1.0.0
+  lesson: "2.1.2-move-copy-clone"
+  description: "Course 1 Lesson 2.1.2: Three ways values transfer — move, Copy, Clone"
+  transcript_anchor: "assignment transfers ownership for non-Copy types, Copy duplicates stack-only types, Clone performs explicit deep copy"
+  references:
+  - "The Rust Book §4.1 What Is Ownership"
+  - "std::marker::Copy, std::clone::Clone"
+equations:
+  copy_i32_both_usable:
+    formula: "copy_i32_both_usable() -> (i32, i32)"
+    domain: "No arguments"
+    invariants:
+    - "Both returned values are equal"
+    - "i32 implements Copy — assignment duplicates the bits"
+    preconditions:
+    - "None"
+    postconditions:
+    - "Return value is the tuple (x, y) where x == y"
+  move_string_transfers:
+    formula: "move_string_transfers(s: String) -> (usize, String)"
+    domain: "Any String"
+    invariants:
+    - "Returned String has same length as input"
+    - "Returned String has same bytes as input"
+    - "Original binding is no longer usable after the move (compile-time enforced)"
+    preconditions:
+    - "s is a valid String"
+    postconditions:
+    - "Returned (len, s2) satisfies len == s2.len()"
+    - "No allocation — only ownership transfer"
+  clone_string_independent:
+    formula: "clone_string_independent(s: &str) -> (String, String)"
+    domain: "Any &str"
+    invariants:
+    - "Both returned Strings have equal content"
+    - "Both returned Strings have independent heap buffers (distinct pointers)"
+    preconditions:
+    - "s is a valid &str"
+    postconditions:
+    - "(a, b) satisfies a == b && a.as_ptr() != b.as_ptr() when s is non-empty"

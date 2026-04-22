@@ -1,0 +1,42 @@
+metadata:
+  version: 1.0.0
+  lesson: "3.3.1-closures"
+  description: "Course 1 Lesson 3.3.1: Closures — Fn, FnMut, FnOnce capture modes"
+  transcript_anchor: "Fn, FnMut, FnOnce — the three traits that describe how a closure captures"
+  references:
+  - "The Rust Book §13.1 Closures: Anonymous Functions"
+  - "std::ops::Fn / FnMut / FnOnce"
+equations:
+  make_adder:
+    formula: "make_adder(n: i32) -> impl Fn(i32) -> i32"
+    domain: "Any i32"
+    invariants:
+    - "Returned closure implements Fn (callable multiple times without mutation)"
+    - "For all x: make_adder(n)(x) == n + x (saturating_add)"
+    - "Closure is pure — same input produces same output across invocations"
+    preconditions:
+    - "n is a valid i32"
+    postconditions:
+    - "Return value is a closure that borrows n immutably"
+  make_counter:
+    formula: "make_counter() -> impl FnMut() -> u32"
+    domain: "No arguments"
+    invariants:
+    - "Returned closure implements FnMut (mutates captured state)"
+    - "Successive calls return strictly monotonically increasing values starting at 1"
+    - "The k-th call (1-indexed) returns exactly k"
+    preconditions:
+    - "None"
+    postconditions:
+    - "Internal counter advances by exactly 1 per call"
+  make_once:
+    formula: "make_once(s: String) -> impl FnOnce() -> String"
+    domain: "Any String"
+    invariants:
+    - "Returned closure implements FnOnce (consumes captured value)"
+    - "Invoking the closure returns the captured String unchanged"
+    - "Closure cannot be invoked more than once (compile-time enforced)"
+    preconditions:
+    - "s is a valid String"
+    postconditions:
+    - "Closure invocation returns s byte-identical to input"

@@ -1,0 +1,30 @@
+metadata:
+  version: 1.0.0
+  lesson: "1.1.1-what-is-rust"
+  description: "Course 1 Lesson 1.1.1: Memory safety at compile time — Drop runs exactly once, double-free is unrepresentable"
+  transcript_anchor: "the compiler refuses to build your program if it cannot prove your memory access is safe"
+  references:
+  - "The Rust Book §4.1 What Is Ownership"
+equations:
+  scoped_allocation:
+    formula: "scoped_allocation(s: &str) -> u64"
+    domain: "Any valid UTF-8 string slice"
+    invariants:
+    - "Drop runs exactly once per LoggedString instance"
+    - "Return value equals the global drop count AFTER scope exit"
+    - "No panics on any input (including empty string)"
+    preconditions:
+    - "s is a valid &str"
+    postconditions:
+    - "Drop counter incremented by exactly 1"
+    - "Owned heap buffer is released before return"
+  double_drop_impossible:
+    formula: "compile_fail: let s = LoggedString::new(\"x\"); drop(s); drop(s);"
+    domain: "Attempted double-drop after explicit drop"
+    invariants:
+    - "Second use of moved value MUST fail compilation"
+    - "Rust's ownership rules make double-free unrepresentable"
+    preconditions:
+    - "None — this is a compile-time property"
+    postconditions:
+    - "rustc emits error E0382: use of moved value"
