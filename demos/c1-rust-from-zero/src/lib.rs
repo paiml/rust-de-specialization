@@ -1,7 +1,18 @@
 //! Course 1: Rust from Zero — ownership, borrowing, iterators, error handling.
 //!
-//! Contract: `contracts/fruit-parser-v1.yaml`
-//! Theme: Parse a fruit CSV, aggregate by category, emit JSON.
+//! Two layers:
+//! - **Thematic demo** (this file): fruit CSV parser touching every week-1
+//!   concept. Contract: `contracts/fruit-parser-v1.yaml`.
+//! - **Per-lesson demos** (`l111_`, `l211_`, `l212_`, `l232_`, `l331_`, `l332_`):
+//!   one minimal, provable demo per concept-heavy lesson. Each module has a
+//!   matching `contracts/c1-l*-v1.yaml` with invariants asserted by tests.
+
+pub mod l111_memory_safety;
+pub mod l211_ownership;
+pub mod l212_move_copy_clone;
+pub mod l232_result_question;
+pub mod l331_closures;
+pub mod l332_iterators;
 
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;

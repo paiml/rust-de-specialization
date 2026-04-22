@@ -1,0 +1,40 @@
+metadata:
+  version: 1.0.0
+  lesson: "2.1.1-ownership"
+  description: "Course 1 Lesson 2.1.1: Stack vs heap, one owner, Drop on scope exit"
+  transcript_anchor: "every Rust program has two places to put things, the stack and heap"
+  references:
+  - "The Rust Book §4.1 What Is Ownership"
+equations:
+  stack_size:
+    formula: "stack_size_i32() -> usize"
+    domain: "No arguments — constant query"
+    invariants:
+    - "Returns exactly std::mem::size_of::<i32>() = 4 bytes"
+    - "Does not allocate on the heap"
+    preconditions:
+    - "None"
+    postconditions:
+    - "Return value equals 4 on all supported platforms"
+  heap_backed_length:
+    formula: "heap_backed_length(s: String) -> usize"
+    domain: "Any String (function takes ownership)"
+    invariants:
+    - "Takes ownership — caller loses access to s after call"
+    - "Returns the byte length of the heap buffer"
+    - "Drop fires exactly once at the end of the function body"
+    preconditions:
+    - "s is valid UTF-8 (enforced by the String type)"
+    postconditions:
+    - "Return value equals s.len() at call time"
+    - "Heap buffer is freed before the function returns"
+  one_owner_one_drop:
+    formula: "one_owner_one_drop() -> u64"
+    domain: "No arguments — demonstrates scope-exit Drop"
+    invariants:
+    - "Exactly one Drop call per TrackedAlloc instance"
+    - "Return value equals 1 after scope exit"
+    preconditions:
+    - "None"
+    postconditions:
+    - "Global drop counter incremented by exactly 1"
