@@ -1,0 +1,81 @@
+version: 1
+lesson_id: "2.3.2"
+course_id: "c1-rust-from-zero"
+concept: "result_question_operator_oracle_equivalence"
+description: >
+  Lesson 2.3.2 Playground Proof: the `?` operator produces output
+  equivalent to nested `match`. Live-probed against
+  play.rust-lang.org/execute 2026-04-22 — stdout
+  "oracle: 4/4 equivalent", exit 0.
+
+source:
+  inline: |
+    use std::num::ParseIntError;
+
+    #[derive(Debug, PartialEq)]
+    enum AppError {
+        Parse(String),
+        DivByZero,
+    }
+
+    impl From<ParseIntError> for AppError {
+        fn from(e: ParseIntError) -> Self {
+            AppError::Parse(e.to_string())
+        }
+    }
+
+    fn parse_age(s: &str) -> Result<i32, AppError> {
+        let n: i32 = s.parse()?;
+        Ok(n)
+    }
+
+    fn divide(n: i32, d: i32) -> Result<i32, AppError> {
+        if d == 0 { Err(AppError::DivByZero) } else { Ok(n / d) }
+    }
+
+    fn chain_question(s: &str, d: i32) -> Result<i32, AppError> {
+        let n = parse_age(s)?;
+        let q = divide(n, d)?;
+        Ok(q)
+    }
+
+    fn chain_match(s: &str, d: i32) -> Result<i32, AppError> {
+        match parse_age(s) {
+            Err(e) => Err(e),
+            Ok(n) => match divide(n, d) {
+                Err(e) => Err(e),
+                Ok(q) => Ok(q),
+            },
+        }
+    }
+
+    fn main() {
+        let cases = [("42", 2), ("10", 0), ("abc", 2), ("", 1)];
+        let mut passed = 0usize;
+        for (s, d) in cases {
+            let q = chain_question(s, d);
+            let m = chain_match(s, d);
+            assert_eq!(q, m, "divergence at ({s:?}, {d})");
+            passed += 1;
+        }
+        println!("oracle: {passed}/{} equivalent", cases.len());
+    }
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "oracle: 4/4 equivalent"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic across all 4 oracle cases"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
+  - "`?` operator produces output identical to nested `match`"

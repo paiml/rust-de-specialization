@@ -1,0 +1,51 @@
+version: 1
+lesson_id: "1.1.1"
+course_id: "c1-rust-from-zero"
+concept: "memory_safety_drop_once"
+description: >
+  Lesson 1.1.1 Playground Proof: Drop runs exactly once per scoped value.
+  Live-probed against play.rust-lang.org/execute 2026-04-22 —
+  stdout "drops: 1", exit 0.
+
+source:
+  inline: |
+    use std::sync::atomic::{AtomicU64, Ordering};
+
+    static DROPS: AtomicU64 = AtomicU64::new(0);
+
+    struct LoggedString(String);
+
+    impl Drop for LoggedString {
+        fn drop(&mut self) {
+            DROPS.fetch_add(1, Ordering::SeqCst);
+        }
+    }
+
+    fn main() {
+        {
+            let s = LoggedString(String::from("alice"));
+            assert_eq!(s.0.len(), 5);
+        }
+        let n = DROPS.load(Ordering::SeqCst);
+        println!("drops: {n}");
+        assert_eq!(n, 1);
+    }
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "drops: 1"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
+  - "Drop runs exactly once per LoggedString instance"

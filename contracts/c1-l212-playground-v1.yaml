@@ -1,0 +1,40 @@
+version: 1
+lesson_id: "2.1.2"
+course_id: "c1-rust-from-zero"
+concept: "move_semantics_use_after_move_rejected"
+description: >
+  Lesson 2.1.2 Playground Proof: the borrow checker rejects use of a
+  moved String. Live-probed against play.rust-lang.org/execute
+  2026-04-22 — success=false, stderr contains E0382 with
+  "value moved here" and "value borrowed here after move".
+
+source:
+  inline: |
+    fn main() {
+        let s = String::from("hello");
+        let t = s;
+        println!("{}", s);
+        let _ = t;
+    }
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: compile_fail
+  expected_error_codes:
+    - "E0382"
+  expected_stderr_contains:
+    - "borrow of moved value"
+    - "value moved here"
+    - "value borrowed here after move"
+
+invariants:
+  - "does NOT compile on stable channel"
+  - "rustc emits error[E0382]"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
+  - "Ownership rules make use-after-move unrepresentable"
