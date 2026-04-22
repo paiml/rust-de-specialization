@@ -53,6 +53,8 @@ later exercises assume the earlier contracts.
 
 **Lesson 1.1.1 · Demo:** [`l111_memory_safety.rs`](../demos/c1-rust-from-zero/src/l111_memory_safety.rs)
 
+**[Try it in Playground →](https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=3c10851a578b59352f8eef4eb8e6192c)**
+
 **Contract to feel:** `Drop` runs **exactly once** per owned value, and
 a double-free is not just unlikely — it is **unrepresentable** in source.
 
@@ -120,6 +122,8 @@ into a borrowing one. Notice what the last line needs now.
 
 **Lesson 2.1.2 · Demo:** [`l212_move_copy_clone.rs`](../demos/c1-rust-from-zero/src/l212_move_copy_clone.rs)
 
+**[Try it in Playground →](https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=eede4541b7569bea8a30afd1db4d8a20)** (this one is a *provable compile failure* — `E0382: borrow of moved value`)
+
 **Contract to feel:** Primitive types implement `Copy` and are duplicated
 implicitly. Heap-owning types (`String`, `Vec<T>`) are **moved** by
 default, and require an explicit `.clone()` to duplicate.
@@ -161,6 +165,8 @@ struct Record { name: String, age: u32 }
 ### Exercise 4 — `Result` and the `?` Operator
 
 **Lesson 2.3.2 · Demo:** [`l232_result_question.rs`](../demos/c1-rust-from-zero/src/l232_result_question.rs)
+
+**[Try it in Playground →](https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=b6626bbd41a71e75cb041bf05cc5ed3a)** (prints `oracle: 4/4 equivalent` when `?` and hand-written `match` agree across every input)
 
 **Contract to feel:** `?` is **literally** the nested-match form you'd
 write by hand — same behavior, shorter code. The two versions are

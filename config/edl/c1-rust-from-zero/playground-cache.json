@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "updated_at": "2026-04-22T08:43:04.004909165Z",
+  "entries": {
+    "2.3.2-playground": {
+      "contract_sha256": "a114a0590124643593edabc45a5770a83f5ad5c0c86a298bcd246da4a5292df4",
+      "code_sha256": "90ebadf99d3800fbd9ae6dcce45e22c4db8db109e5aa05e9016106379d15e7e9",
+      "gist_id": "b6626bbd41a71e75cb041bf05cc5ed3a",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=b6626bbd41a71e75cb041bf05cc5ed3a",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-04-22T08:42:56.673066166Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "oracle: 4/4 equivalent\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.1.2-playground": {
+      "contract_sha256": "7b2cf6e13c991c73734a36ee1c375120aef944d2ac659da34f8a8b466b3b8b7c",
+      "code_sha256": "f8be5b9a4494ea20d95f076094e11048f1d60bee073a6d8599a99f40a6c8be45",
+      "gist_id": "eede4541b7569bea8a30afd1db4d8a20",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=eede4541b7569bea8a30afd1db4d8a20",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-04-22T08:42:52.479578463Z",
+      "outcome": "CompileFail",
+      "stderr_snapshot": "error[E0382]: borrow of moved value: `s`\n --> src/main.rs:4:20\n  |\n2 |     let s = String::from(\"hello\");\n  |         - move occurs because `s` has type `String`, which does not implement the `Copy` trait\n3 |     let t = s;\n  |             - value moved here\n4 |     println!(\"{}\", s);\n  |                    ^ value borrowed here after move\n  |\nhelp: consider cloning the value if the performance cost is acceptable\n  |\n3 |     let t = s.clone();\n  |              ++++++++\n\nFor more information about this error, try `rustc --explain E0382`.\nerror: could not compile `playground` (bin \"playground\") due to 1 previous error\n",
+      "proof_kind": "compile_fail",
+      "observed_error_codes": [
+        "E0382"
+      ]
+    },
+    "1.1.1-playground": {
+      "contract_sha256": "2c880b16236e76b67b7f33a6ec63c203dbe154efc6a88a5f71093085423cb924",
+      "code_sha256": "be887ed6463f1846e5357f9b81f456806f9d4f1dfe6873821157920f1fdfbfdd",
+      "gist_id": "3c10851a578b59352f8eef4eb8e6192c",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=3c10851a578b59352f8eef4eb8e6192c",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-04-22T08:42:43.755911550Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "drops: 1\n",
+      "proof_kind": "runtime_assert"
+    }
+  }
+}
