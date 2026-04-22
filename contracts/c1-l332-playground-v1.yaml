@@ -1,0 +1,83 @@
+version: 1
+lesson_id: "3.3.2"
+course_id: "c1-rust-from-zero"
+concept: "iterators_lazy_adapters_oracle_equivalence"
+description: >
+  Lesson 3.3.2 Playground Proof: iterator pipelines (filter + map +
+  collect) produce output bit-identical to an explicit loop
+  (oracle equivalence), AND adapter chains without a consumer do NOT
+  execute their closures (laziness invariant). Runs the oracle for
+  n in 0..=20 and verifies the lazy side-effect counter stays at 0
+  until a consumer drives the chain. Expected stdout
+  "iterators: 21/21 equivalent, lazy: ok", exit 0.
+
+source:
+  inline: |
+    use std::cell::Cell;
+
+    fn pipeline(n: u32) -> Vec<u32> {
+        (1..=n).filter(|x| x % 2 == 0).map(|x| x * x).collect()
+    }
+
+    fn eager_pipeline(n: u32) -> Vec<u32> {
+        let mut out = Vec::new();
+        for x in 1..=n {
+            if x % 2 == 0 {
+                out.push(x * x);
+            }
+        }
+        out
+    }
+
+    fn main() {
+        // Invariant 1: oracle equivalence across a range.
+        let mut equivalent = 0usize;
+        let upper = 20u32;
+        for n in 0..=upper {
+            assert_eq!(pipeline(n), eager_pipeline(n), "divergence at n={n}");
+            equivalent += 1;
+        }
+
+        // Invariant 2: lazy adapters do not execute without a consumer.
+        let counter: Cell<u32> = Cell::new(0);
+        let _chain = (1..=10_u32).filter(|_| {
+            counter.set(counter.get() + 1);
+            true
+        }).map(|x| x * 2);
+        // _chain is built but never consumed.
+        assert_eq!(counter.get(), 0, "filter closure ran without a consumer");
+
+        // Invariant 3 (companion): once consumed, the closure runs exactly
+        // once per element. Demonstrates that the counter above was zero
+        // because of laziness, not because the closure was broken.
+        let counter2: Cell<u32> = Cell::new(0);
+        let sum: u32 = (1..=10_u32)
+            .filter(|_| { counter2.set(counter2.get() + 1); true })
+            .map(|x| x * 2)
+            .sum();
+        assert_eq!(sum, 110);
+        assert_eq!(counter2.get(), 10);
+
+        println!("iterators: {equivalent}/{} equivalent, lazy: ok", upper + 1);
+    }
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "iterators: 21/21 equivalent, lazy: ok"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
+  - "pipeline(n) == eager_pipeline(n) for all n in 0..=20"
+  - "adapter chain without consumer does not execute filter/map closures"
+  - "consumed adapter chain runs each closure once per element"
