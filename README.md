@@ -20,13 +20,13 @@ and DataFrame analytics to compile-time correctness guarantees via provable cont
 | 3 | **ETL Pipelines with Rust** | Pipelines | csv, serde, tokio, reqwest | — | [Capstone](capstones/c03-capstone.md) |
 | 4 | **SQL Databases with Rust** | Production DB | sqlx | — | [Capstone](capstones/c04-capstone.md) |
 | 5 | **Polars from Zero** | Analytics | polars | — | [Capstone](capstones/c05-capstone.md) |
-| 6 | **DuckDB with Rust** | Analytics | duckdb | — | [Capstone](capstones/c06-capstone.md) |
+| 6 | **Rust Serverless** | Serverless | lambda_runtime, cargo-lambda | [paiml/rust-serverless-data-engineering](https://github.com/paiml/rust-serverless-data-engineering) | [Capstone](capstones/c06-capstone.md) |
 | 7 | **Design by Provable Contracts** | Correctness | std, type-system patterns | — | [Capstone](capstones/c07-capstone.md) |
 
 ## Learning Arc
 
 ```
-Language ──► Local DB ──► Pipelines ──► Production DB ──► Analytics ──► Analytics+ ──► Correctness
+Language ──► Local DB ──► Pipelines ──► Production DB ──► Analytics ──► Serverless ──► Correctness
   (1)          (2)          (3)            (4)              (5)           (6)            (7)
 ```
 
@@ -37,7 +37,7 @@ Language ──► Local DB ──► Pipelines ──► Production DB ──�
 | Pipelines | 3 · ETL Pipelines with Rust | Rust basics + HTTP/async | Real-world data movement |
 | Production DB | 4 · SQL Databases with Rust | SQLite patterns + async (tokio) | Type-safe DB in services |
 | Analytics | 5 · Polars from Zero | ETL patterns + Parquet basics | Fast DataFrame analytics |
-| Analytics | 6 · DuckDB with Rust | Polars + columnar concepts | Analytical SQL inside Rust processes |
+| Serverless | 6 · Rust Serverless | Production DB + ETL patterns | Event-driven Lambda functions in Rust |
 | Correctness | 7 · Design by Provable Contracts | Full Rust type system fluency | Compile-time pipeline guarantees |
 
 ## Installation
