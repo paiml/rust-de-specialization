@@ -18,40 +18,64 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ─── Detect which paths changed ─────────────────────────────────────
+      # Cargo-pipeline steps below are skipped when the PR only touches
+      # docs / assets / capstones. The job itself still runs (and reports
+      # the "gate" check) so branch protection stays happy.
+      - name: Detect changed paths
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            code:
+              - '**/*.rs'
+              - '**/Cargo.toml'
+              - '**/Cargo.lock'
+              - 'Makefile'
+              - '.github/workflows/**'
+              - 'rust-toolchain*'
+              - 'clippy.toml'
+              - 'deny.toml'
+
+      # ─── Always-on lightweight gates (run on every PR) ──────────────────
+      - name: Validate capstones (md + structure)
+        run: make test-capstones
+
+      # ─── Heavy gates: only when code actually changed ───────────────────
       - name: Free disk space
+        if: steps.changes.outputs.code == 'true'
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache
           df -h /
 
       - name: Install Rust toolchain
+        if: steps.changes.outputs.code == 'true'
         uses: dtolnay/rust-toolchain@stable
         with:
-          components: clippy, rustfmt, llvm-tools-preview
+          components: clippy, rustfmt
 
-      - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@cargo-llvm-cov
-
-      - name: Cache cargo registry + target
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
+      # Swatinem/rust-cache is Rust-aware:
+      #   • caches ~/.cargo/{registry/index,registry/cache,git/db} (not the heavy bin tree)
+      #   • prunes target/ to fingerprints + cache-key artifacts only
+      #   • per-crate splitting, automatic cache key hashing of Cargo.lock + rust-toolchain
+      # ~3-5 min saved on cold builds vs actions/cache@v4.
+      - name: Cache Rust deps
+        if: steps.changes.outputs.code == 'true'
+        uses: Swatinem/rust-cache@v2
 
       - name: Check formatting
+        if: steps.changes.outputs.code == 'true'
         run: cargo fmt --all -- --check
 
       - name: Clippy
+        if: steps.changes.outputs.code == 'true'
         run: cargo clippy --workspace -- -D warnings
 
-      - name: Validate capstones
-        run: make test-capstones
-
       - name: Test
+        if: steps.changes.outputs.code == 'true'
         run: cargo test --workspace
 
-      - name: Coverage (100% functions, 98%+ lines)
-        run: cargo llvm-cov --workspace --lib --fail-under-functions 100 --fail-under-lines 98
+      # ─── Coverage moved to .github/workflows/coverage.yml ───────────────
+      # Coverage runs nightly + on push to main (paths-filtered). Keeps the
+      # PR gate fast (~3 min hot, ~30 sec for doc-only PRs); coverage drift
+      # is caught daily via the scheduled run.
