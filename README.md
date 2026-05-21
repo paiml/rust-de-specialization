@@ -2,18 +2,42 @@
 
 [![CI](https://github.com/paiml/rust-de-specialization/actions/workflows/ci.yml/badge.svg)](https://github.com/paiml/rust-de-specialization/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Coursera](https://img.shields.io/badge/Coursera-Specialization-2A73CC?logo=coursera&logoColor=white)](https://www.coursera.org/specializations/rust)
+[![Rust](https://img.shields.io/badge/Rust-1.75%2B-orange?logo=rust&logoColor=white)](https://www.rust-lang.org/)
 
 <p align="center">
   <img src="assets/hero.svg" alt="Rust for Data Engineering: Coursera Specialization" width="100%"/>
 </p>
 
-**Fast, Reliable & Correct Data Pipelines in Rust** — a **[31-course Coursera specialization](https://www.coursera.org/specializations/rust)** that takes you from Rust fundamentals through embedded databases, async ETL, analytics, GUI, parallelism, and compile-time correctness, all the way to formal-contract-gated production pipelines.
+**Fast, Reliable & Correct Data Pipelines in Rust.** A [31-course Coursera specialization](https://www.coursera.org/specializations/rust) that takes you from Rust fundamentals through embedded databases, async ETL, analytics, GUI work, parallelism, and compile-time correctness — all the way to formal-contract-gated production pipelines.
 
-Enroll in the specialization on Coursera: <https://www.coursera.org/specializations/rust>. (Maintainers can also track the live curriculum at <https://www.coursera.org/teach-specialization/rust/>.)
+> 🎓 **Enroll on Coursera:** <https://www.coursera.org/specializations/rust>
+
+## Table of Contents
+
+- [What You'll Learn](#what-youll-learn)
+- [Courses](#courses)
+- [Capstone Projects](#capstone-projects)
+- [Quick Start](#quick-start)
+- [Course Design Standard](#course-design-standard)
+- [Repository Layout](#repository-layout)
+- [Instructors](#instructors)
+- [Contributing](#contributing)
+- [License](#license)
+
+## What You'll Learn
+
+The curriculum is organized into five tracks that mirror the modern data engineering stack:
+
+- **Foundations & Systems** — Rust fundamentals, Linux desktop, terminal workflows, CLI tools, and shipping production binaries.
+- **Data, Databases & Algorithms** — SQLite, MySQL, Postgres, DuckDB, Polars, graph algorithms, and RAG pipelines.
+- **Cloud & DataOps** — Serverless on AWS, GCP, monitoring & automation, CI/CD, and containers for data pipelines.
+- **AI & Adjacent Languages** — Claude-driven workflows, Zig for systems work, and WebAssembly.
+- **Methodology & Ethics** — Data ethics, Agile with AI, design by provable contracts, and Big-O thinking from Python to Rust.
 
 ## Courses
 
-The full 31-course catalog in Coursera dashboard order. `🟢 Launched` = live on Coursera; `⚪ Draft` = in production.
+The full 31-course catalog in Coursera dashboard order. 🟢 **Launched** = live on Coursera; ⚪ **Draft** = in production.
 
 | # | Course | Status | Instructor | Companion Repo |
 |---|---|---|---|---|
@@ -30,26 +54,26 @@ The full 31-course catalog in Coursera dashboard order. `🟢 Launched` = live o
 | 11 | [Terminal from Zero](https://www.coursera.org/learn/terminal) | 🟢 Launched | Noah Gift | — |
 | 12 | [Rust on GCP](https://www.coursera.org/learn/rust-gcp) | 🟢 Launched | Noah Gift | — |
 | 13 | [Shipping Rust](https://www.coursera.org/learn/ship) | 🟢 Launched | Noah Gift | [paiml/shipping-rust](https://github.com/paiml/shipping-rust) |
-| 14 | [Claude from Zero](https://www.coursera.org/learn/claude) | ⚪ Draft | Noah Gift | [paiml/claude-from-zero](https://github.com/paiml/claude-from-zero) |
+| 14 | Claude from Zero | ⚪ Draft | Noah Gift | [paiml/claude-from-zero](https://github.com/paiml/claude-from-zero) |
 | 15 | [Rust CLI from Zero](https://www.coursera.org/learn/cli) | 🟢 Launched | Alfredo Deza | [paiml/rust-cli](https://github.com/paiml/rust-cli) |
 | 16 | [Graph Algorithms with Rust](https://www.coursera.org/learn/graph) | 🟢 Launched | Noah Gift | [paiml/rust-graph-algorithms](https://github.com/paiml/rust-graph-algorithms) |
 | 17 | [MySQL from Zero](https://www.coursera.org/learn/queries) | 🟢 Launched | Alfredo Deza | [paiml/mysql-from-zero](https://github.com/paiml/mysql-from-zero) |
 | 18 | [Postgres from Zero](https://www.coursera.org/learn/postgres) | 🟢 Launched | Alfredo Deza | [paiml/postgres-from-zero](https://github.com/paiml/postgres-from-zero) |
 | 19 | [RAG from Zero](https://www.coursera.org/learn/rag) | 🟢 Launched | Noah Gift | [paiml/rag-from-zero](https://github.com/paiml/rag-from-zero) |
 | 20 | [DuckDB from Zero](https://www.coursera.org/learn/duckdb) | 🟢 Launched | Alfredo Deza | [paiml/duckdb-from-zero](https://github.com/paiml/duckdb-from-zero) |
-| 21 | [Valkey from Zero](https://www.coursera.org/learn/valkey) | ⚪ Draft | Noah Gift | [paiml/valkey-from-zero](https://github.com/paiml/valkey-from-zero) |
+| 21 | Valkey from Zero | ⚪ Draft | Noah Gift | [paiml/valkey-from-zero](https://github.com/paiml/valkey-from-zero) |
 | 22 | [Rust for Data Source Monitoring and Automation](https://www.coursera.org/learn/monitoring) | 🟢 Launched | Alfredo Deza | [this repo](https://github.com/paiml/rust-de-specialization) |
 | 23 | [Rust DataOps: CI/CD and Containers for Data Pipelines](https://www.coursera.org/learn/pipeline) | 🟢 Launched | Alfredo Deza | [this repo](https://github.com/paiml/rust-de-specialization) |
-| 24 | [HelixDB from Zero](https://www.coursera.org/learn/helixdb) | ⚪ Draft | Noah Gift | [paiml/helixdb-from-zero](https://github.com/paiml/helixdb-from-zero) |
-| 25 | [Design by Provable Contracts](https://www.coursera.org/learn/dbc) | ⚪ Draft | Noah Gift | [paiml/design-by-provable-contracts](https://github.com/paiml/design-by-provable-contracts) |
-| 26 | [IaC from Zero](https://www.coursera.org/learn/iac) | ⚪ Draft | Noah Gift | [paiml/iac-from-zero](https://github.com/paiml/iac-from-zero) |
-| 27 | [TUI from Zero](https://www.coursera.org/learn/tui) | ⚪ Draft | Noah Gift | [paiml/tui-from-zero](https://github.com/paiml/tui-from-zero) |
-| 28 | [WASM from Zero](https://www.coursera.org/learn/wasm) | ⚪ Draft | Noah Gift | [paiml/wasm-from-zero](https://github.com/paiml/wasm-from-zero) |
-| 29 | [Bash to Rust: From Zero](https://www.coursera.org/learn/bashrs) | ⚪ Draft | Noah Gift | [paiml/bashrs-from-zero](https://github.com/paiml/bashrs-from-zero) |
-| 30 | [Big O Notation: Python to Rust](https://www.coursera.org/learn/bigo) | ⚪ Draft | Noah Gift | [paiml/big-o-python-to-rust](https://github.com/paiml/big-o-python-to-rust) |
-| 31 | [OO: Python to Rust](https://www.coursera.org/learn/oo) | ⚪ Draft | Noah Gift | [paiml/oo-python-to-rust](https://github.com/paiml/oo-python-to-rust) |
+| 24 | HelixDB from Zero | ⚪ Draft | Noah Gift | [paiml/helixdb-from-zero](https://github.com/paiml/helixdb-from-zero) |
+| 25 | Design by Provable Contracts | ⚪ Draft | Noah Gift | [paiml/design-by-provable-contracts](https://github.com/paiml/design-by-provable-contracts) |
+| 26 | IaC from Zero | ⚪ Draft | Noah Gift | [paiml/iac-from-zero](https://github.com/paiml/iac-from-zero) |
+| 27 | TUI from Zero | ⚪ Draft | Noah Gift | [paiml/tui-from-zero](https://github.com/paiml/tui-from-zero) |
+| 28 | WASM from Zero | ⚪ Draft | Noah Gift | [paiml/wasm-from-zero](https://github.com/paiml/wasm-from-zero) |
+| 29 | Bash to Rust: From Zero | ⚪ Draft | Noah Gift | [paiml/bashrs-from-zero](https://github.com/paiml/bashrs-from-zero) |
+| 30 | Big O Notation: Python to Rust | ⚪ Draft | Noah Gift | [paiml/big-o-python-to-rust](https://github.com/paiml/big-o-python-to-rust) |
+| 31 | OO: Python to Rust | ⚪ Draft | Noah Gift | [paiml/oo-python-to-rust](https://github.com/paiml/oo-python-to-rust) |
 
-**Snapshot taken 2026-05-21** from the Coursera teach dashboard — see the curriculum URL above for the live state.
+> Draft courses are in production and will be linked to their Coursera landing pages as they launch. Snapshot taken 2026-05-21 from the Coursera dashboard.
 
 ## Capstone Projects
 
@@ -57,14 +81,16 @@ The full 31-course catalog in Coursera dashboard order. `🟢 Launched` = live o
   <img src="capstones/banner.svg" alt="Capstone Projects" width="100%"/>
 </p>
 
-Each course includes a hands-on capstone project that integrates all modules into a realistic scenario. Completed capstones can be shared on LinkedIn as portfolio projects. See the [capstones/](capstones/) directory.
+Every course includes a hands-on capstone that integrates all modules into a realistic scenario. Completed capstones make great portfolio artifacts to share on LinkedIn or GitHub. Browse the [`capstones/`](capstones/) directory for full project briefs.
 
-Two courses also ship **Playground Readings** — zero-install companion walkthroughs that run on <https://play.rust-lang.org/> so you can master the core concepts in the browser before tackling the full project capstone:
+Two courses ship **Playground Readings** — zero-install companion walkthroughs that run entirely on the [Rust Playground](https://play.rust-lang.org/), so you can master the core concepts in the browser before tackling the full capstone:
 
-- [Course 1 Playground Reading](capstones/c01-capstone-reading.md) — six lesson-aligned exercises covering Rust fundamentals
-- [Course 4 Playground Reading](capstones/c04-capstone-reading.md) — eight lesson-aligned sections on async pools, typed row deserialization, idempotent migrations, RAII-rollback transactions, and row-aligned validation
+- [Course 1 — Rust from Zero](capstones/c01-capstone-reading.md): six lesson-aligned exercises covering Rust fundamentals.
+- [Course 3 — ETL Pipelines with Rust](capstones/c03-capstone-reading.md): eight lesson-aligned sections on async pools, typed row deserialization, idempotent migrations, RAII-rollback transactions, and row-aligned validation.
 
-## Installation
+## Quick Start
+
+**Prerequisites:** [Rust 1.75+](https://www.rust-lang.org/tools/install), [`make`](https://www.gnu.org/software/make/), and a POSIX shell.
 
 ```bash
 git clone https://github.com/paiml/rust-de-specialization.git
@@ -72,29 +98,56 @@ cd rust-de-specialization
 make check
 ```
 
-## Usage
+### Common tasks
 
 ```bash
-make help          # Show available commands
-make lint          # Lint markdown files
-make test          # Validate course structure
-make check         # Run lint + test
+make help    # Show all available targets
+make lint    # Lint markdown files
+make test    # Validate course structure
+make check   # Run lint + test (the same gate CI uses)
 ```
 
-## Structure
+## Course Design Standard
 
-Each course is roughly 25-55 items of 3–6 minute videos plus per-lesson Key-Terms reading + Reflection reading, organized as:
+Every course in the specialization follows the **PAIML Course Design Standard**:
 
-**Course → Module (3–5) → Lesson (1–2) → Key Terms (≤150w) + Videos (≤6 min each, max 3 per lesson) + Reflection (≤150w)**
+```
+Course → Module (3–5) → Lesson (1–2)
+          ↳ Key Terms (≤150w)
+          ↳ Videos (≤6 min each, max 3 per lesson)
+          ↳ Reflection (≤150w)
+```
 
-Each course ends with **one** course-end graded 5-question quiz at 80% pass per the PAIML Course Design Standard (banned items: AI Coach, Dialogue, Role-Play, peer-review, module-level graded quizzes, two-presenter videos, supplementary readings).
+Each course is roughly **25–55 items** of 3–6 minute videos paired with per-lesson Key-Terms and Reflection readings, and ends with **one** course-end graded 5-question quiz at an 80% pass mark.
+
+**Banned items:** AI Coach, Dialogue, Role-Play, peer review, module-level graded quizzes, two-presenter videos, and supplementary readings.
+
+## Repository Layout
+
+```
+.
+├── assets/          # Hero image and shared visual assets
+├── capstones/       # Capstone project briefs and Playground readings
+├── config/          # Build and lint configuration
+├── contracts/       # Formal contracts for Course 25 (Design by Provable Contracts)
+├── demos/           # Course demos and runnable examples
+├── coursera-assets/ # Source materials shared with Coursera
+├── .github/         # CI workflows and repo automation
+├── CLAUDE.md        # Notes for AI-assisted contributors
+├── CONTRIBUTING.md  # How to contribute
+└── Makefile         # `make help` for the full task list
+```
 
 ## Instructors
 
-- **Noah Gift** — Founder, Pragmatic AI Labs · Duke University
-- **Alfredo Deza** — Author and content creator · Python, Rust, DevOps, ML
+- **[Noah Gift](https://github.com/noahgift)** — Founder, Pragmatic AI Labs · Duke University faculty
+- **[Alfredo Deza](https://github.com/alfredodeza)** — Author and content creator · Python, Rust, DevOps, ML
 - **Liam Parker** — Rust educator
+
+## Contributing
+
+Issues, typo fixes, and new examples are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request, and run `make check` locally so CI stays green.
 
 ## License
 
-Course content copyright Pragmatic AI Labs. Code examples are MIT licensed.
+Course content © Pragmatic AI Labs. Code examples are released under the [MIT License](LICENSE).
