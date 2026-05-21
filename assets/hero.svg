@@ -1,117 +1,405 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-label="Rust for Data Engineering: 31-Course Specialization">
-  <title>Rust for Data Engineering: 31-Course Specialization</title>
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="rust" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#dea584;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#f74c00;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="data" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#1f6feb;stop-opacity:1"/>
-    </linearGradient>
-    <linearGradient id="ai" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#9f8fef;stop-opacity:1"/>
-      <stop offset="100%" style="stop-color:#7c5cff;stop-opacity:1"/>
-    </linearGradient>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 800" width="2400" height="800" role="img" aria-labelledby="heroTitle heroDesc">
+<title id="heroTitle">Rust for Data Engineering: 31-Course Coursera Specialization</title>
+<desc id="heroDesc">All 31 courses of the Rust for Data Engineering Coursera specialization shown as track-color-coded chips on a dark hex-pattern background. Orange chips are foundations and systems; blue chips are data and database tracks; purple chips are AI; green chips are methodology and ethics. A central "31" badge anchors the title block. Status footer reports 21 Launched and 10 Draft.</desc>
 
-  <rect width="1200" height="300" fill="url(#bg)"/>
+<defs>
+  <style>
+    .h { font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif; }
+    .m { font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace; }
+    .label { font-family: 'Inter', 'Segoe UI', sans-serif; letter-spacing: 0.10em; }
+  </style>
 
-  <!-- Grid pattern -->
-  <g opacity="0.08" stroke="#58a6ff" stroke-width="0.5">
-    <line x1="0" y1="60" x2="1200" y2="60"/>
-    <line x1="0" y1="120" x2="1200" y2="120"/>
-    <line x1="0" y1="180" x2="1200" y2="180"/>
-    <line x1="0" y1="240" x2="1200" y2="240"/>
-    <line x1="200" y1="0" x2="200" y2="300"/>
-    <line x1="400" y1="0" x2="400" y2="300"/>
-    <line x1="600" y1="0" x2="600" y2="300"/>
-    <line x1="800" y1="0" x2="800" y2="300"/>
-    <line x1="1000" y1="0" x2="1000" y2="300"/>
+  <!-- Background: deep terminal radial -->
+  <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+    <stop offset="0%" stop-color="#0d1730"/>
+    <stop offset="60%" stop-color="#0d1117"/>
+    <stop offset="100%" stop-color="#06080c"/>
+  </radialGradient>
+
+  <!-- Hex pattern overlay (lesson-frame style) -->
+  <pattern id="hex" width="60" height="52" patternUnits="userSpaceOnUse">
+    <path d="M30 0 L60 15 L60 37 L30 52 L0 37 L0 15 Z" fill="none" stroke="#fff" stroke-width="0.4" opacity="0.045"/>
+  </pattern>
+
+  <!-- Track gradients -->
+  <linearGradient id="g-orange" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#dea584"/>
+    <stop offset="100%" stop-color="#f74c00"/>
+  </linearGradient>
+  <linearGradient id="g-blue" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#58a6ff"/>
+    <stop offset="100%" stop-color="#1f6feb"/>
+  </linearGradient>
+  <linearGradient id="g-purple" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#b8acff"/>
+    <stop offset="100%" stop-color="#7c5cff"/>
+  </linearGradient>
+  <linearGradient id="g-green" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#7ee787"/>
+    <stop offset="100%" stop-color="#00875a"/>
+  </linearGradient>
+
+  <!-- Iridescent title gradient (all four tracks blended) -->
+  <linearGradient id="iridescent" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#dea584"/>
+    <stop offset="33%" stop-color="#58a6ff"/>
+    <stop offset="66%" stop-color="#b8acff"/>
+    <stop offset="100%" stop-color="#7ee787"/>
+  </linearGradient>
+
+  <!-- Atmospheric zone glows -->
+  <radialGradient id="zone-orange" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#f74c00" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#f74c00" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="zone-blue" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#1f6feb" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="zone-purple" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#7c5cff" stop-opacity="0.10"/>
+    <stop offset="100%" stop-color="#7c5cff" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Chip body gradients (track-tinted dark cards) -->
+  <linearGradient id="card-orange" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#2a1a08" stop-opacity="0.92"/>
+    <stop offset="100%" stop-color="#0d1117" stop-opacity="0.92"/>
+  </linearGradient>
+  <linearGradient id="card-blue" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#0b1530" stop-opacity="0.92"/>
+    <stop offset="100%" stop-color="#0d1117" stop-opacity="0.92"/>
+  </linearGradient>
+  <linearGradient id="card-purple" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#1a1230" stop-opacity="0.92"/>
+    <stop offset="100%" stop-color="#0d1117" stop-opacity="0.92"/>
+  </linearGradient>
+  <linearGradient id="card-green" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#0a2820" stop-opacity="0.92"/>
+    <stop offset="100%" stop-color="#0d1117" stop-opacity="0.92"/>
+  </linearGradient>
+
+  <!-- Center badge: iridescent ring -->
+  <linearGradient id="badge-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#dea584"/>
+    <stop offset="50%" stop-color="#58a6ff"/>
+    <stop offset="100%" stop-color="#b8acff"/>
+  </linearGradient>
+
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="6" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+</defs>
+
+<!-- BACKGROUND -->
+<rect width="2400" height="800" fill="url(#bg)"/>
+<rect width="2400" height="800" fill="url(#hex)"/>
+
+<!-- AMBIENT ZONE GLOWS (4 zones, one per track) -->
+<ellipse cx="450" cy="450" rx="520" ry="320" fill="url(#zone-orange)"/>
+<ellipse cx="1200" cy="450" rx="520" ry="320" fill="url(#zone-blue)"/>
+<ellipse cx="1950" cy="450" rx="520" ry="320" fill="url(#zone-purple)"/>
+
+<!-- OUTER FRAME -->
+<rect x="40" y="40" width="2320" height="720" rx="32" fill="none" stroke="#30363d" stroke-width="3" opacity="0.55"/>
+
+<!-- CORNER ACCENT DOTS (iridescent) -->
+<circle cx="60"   cy="60"  r="12" fill="#dea584" opacity="0.75"/>
+<circle cx="2340" cy="60"  r="12" fill="#58a6ff" opacity="0.75"/>
+<circle cx="60"   cy="740" r="12" fill="#7ee787" opacity="0.75"/>
+<circle cx="2340" cy="740" r="12" fill="#b8acff" opacity="0.75"/>
+
+<!-- ====================  TITLE BLOCK  ==================== -->
+
+<!-- Iridescent title — the headline -->
+<text x="1200" y="135" text-anchor="middle" class="h" font-size="92" font-weight="800" fill="url(#iridescent)" filter="url(#glow)">Rust for Data Engineering</text>
+
+<!-- Subtitle -->
+<text x="1200" y="190" text-anchor="middle" class="h" font-size="32" font-weight="400" fill="#c9d1d9">A 31-Course Coursera Specialization · Fast, Reliable &amp; Correct Data Pipelines</text>
+
+<!-- Tagline strip beneath subtitle -->
+<rect x="700" y="208" width="1000" height="3" rx="1.5" fill="url(#iridescent)" opacity="0.85"/>
+
+<!-- ====================  COURSE GRID  ==================== -->
+<!-- 31 chips · 4 rows · 8/8/8/7 with last row centered -->
+<!-- Each chip: 270×80, gap 30px, ry=14 -->
+<!-- Track color stripe on top edge (4px), course-number badge top-left, label centered -->
+
+<!-- ROW 1 (chips 1–8) — y=250 -->
+<g id="row-1">
+  <!-- 1 Rust -->
+  <g><rect x="15"   y="250" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="15"   y="250" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="40"  cy="290" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="40"   y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#dea584">1</text>
+     <text x="170"  y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Rust</text>
   </g>
-
-  <!-- Gear icon (Rust) -->
-  <g transform="translate(80, 165)" fill="none" stroke="url(#rust)" stroke-width="4" opacity="0.8">
-    <circle r="30"/>
-    <circle r="14"/>
-    <line x1="0" y1="-40" x2="0" y2="-22"/>
-    <line x1="0" y1="22" x2="0" y2="40"/>
-    <line x1="-40" y1="0" x2="-22" y2="0"/>
-    <line x1="22" y1="0" x2="40" y2="0"/>
-    <line x1="-28" y1="-28" x2="-16" y2="-16"/>
-    <line x1="16" y1="16" x2="28" y2="28"/>
-    <line x1="-28" y1="28" x2="-16" y2="16"/>
-    <line x1="16" y1="-16" x2="28" y2="-28"/>
+  <!-- 2 SQLite -->
+  <g><rect x="315"  y="250" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="315"  y="250" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="340" cy="290" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="340"  y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#58a6ff">2</text>
+     <text x="470"  y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">SQLite</text>
   </g>
-
-  <!-- "31" big number badge -->
-  <g transform="translate(155, 165)">
-    <circle r="32" fill="#161b22" stroke="url(#rust)" stroke-width="2.5"/>
-    <text x="0" y="9" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="800" fill="#dea584" text-anchor="middle">31</text>
+  <!-- 3 ETL -->
+  <g><rect x="615"  y="250" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="615"  y="250" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="640" cy="290" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="640"  y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#58a6ff">3</text>
+     <text x="770"  y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">ETL</text>
   </g>
-
-  <!-- Pipeline arrows connecting chips -->
-  <g stroke="url(#data)" stroke-width="2" fill="none" opacity="0.45">
-    <path d="M205 145 L240 145"/>
-    <path d="M335 145 L370 145"/>
-    <path d="M465 145 L500 145"/>
-    <path d="M595 145 L630 145"/>
-    <path d="M725 145 L760 145"/>
-    <path d="M855 145 L890 145"/>
-    <path d="M985 145 L1020 145"/>
-    <path d="M205 195 L240 195"/>
-    <path d="M335 195 L370 195"/>
-    <path d="M465 195 L500 195"/>
-    <path d="M595 195 L630 195"/>
-    <path d="M725 195 L760 195"/>
-    <path d="M855 195 L890 195"/>
-    <path d="M985 195 L1020 195"/>
+  <!-- 4 Linux Desktop -->
+  <g><rect x="915"  y="250" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="915"  y="250" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="940" cy="290" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="940"  y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#dea584">4</text>
+     <text x="1070" y="298" text-anchor="middle" class="h" font-size="24" font-weight="600" fill="#ffffff">Linux Desktop</text>
   </g>
-
-  <!-- Top row chips: data foundation (SQLite, ETL, sqlx, Polars, DuckDB, MySQL, Postgres, RAG) -->
-  <g font-family="monospace" font-size="11" text-anchor="middle">
-    <rect x="240" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="287" y="149" fill="#dea584">SQLite</text>
-    <rect x="370" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="417" y="149" fill="#dea584">ETL</text>
-    <rect x="500" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="547" y="149" fill="#58a6ff">Polars</text>
-    <rect x="630" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="677" y="149" fill="#58a6ff">DuckDB</text>
-    <rect x="760" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="807" y="149" fill="#58a6ff">MySQL</text>
-    <rect x="890" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="937" y="149" fill="#58a6ff">Postgres</text>
-    <rect x="1020" y="128" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="1067" y="149" fill="#9f8fef">RAG</text>
+  <!-- 5 Polars -->
+  <g><rect x="1215" y="250" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1215" y="250" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="1240" cy="290" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="1240" y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#58a6ff">5</text>
+     <text x="1370" y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Polars</text>
   </g>
-
-  <!-- Bottom row chips: systems + AI + frontends (GUI, TUI, WASM, Serverless, IaC, Contracts, Claude) -->
-  <g font-family="monospace" font-size="11" text-anchor="middle">
-    <rect x="240" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="287" y="199" fill="#dea584">GUI</text>
-    <rect x="370" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="417" y="199" fill="#dea584">TUI</text>
-    <rect x="500" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="547" y="199" fill="#dea584">WASM</text>
-    <rect x="630" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="677" y="199" fill="#58a6ff">Serverless</text>
-    <rect x="760" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="807" y="199" fill="#58a6ff">IaC</text>
-    <rect x="890" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="937" y="199" fill="#9f8fef">Contracts</text>
-    <rect x="1020" y="178" width="95" height="32" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
-    <text x="1067" y="199" fill="#9f8fef">Claude</text>
+  <!-- 6 Serverless -->
+  <g><rect x="1515" y="250" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1515" y="250" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="1540" cy="290" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="1540" y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#dea584">6</text>
+     <text x="1670" y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Serverless</text>
   </g>
+  <!-- 7 Ethics -->
+  <g><rect x="1815" y="250" width="270" height="80" rx="14" fill="url(#card-green)" stroke="#7ee787" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1815" y="250" width="270" height="4"  rx="2"  fill="url(#g-green)"/>
+     <circle cx="1840" cy="290" r="16" fill="#0d1117" stroke="#7ee787" stroke-width="2"/>
+     <text x="1840" y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#7ee787">7</text>
+     <text x="1970" y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Data Ethics</text>
+  </g>
+  <!-- 8 Agile + AI -->
+  <g><rect x="2115" y="250" width="270" height="80" rx="14" fill="url(#card-green)" stroke="#7ee787" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="2115" y="250" width="270" height="4"  rx="2"  fill="url(#g-green)"/>
+     <circle cx="2140" cy="290" r="16" fill="#0d1117" stroke="#7ee787" stroke-width="2"/>
+     <text x="2140" y="296" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#7ee787">8</text>
+     <text x="2270" y="298" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Agile + AI</text>
+  </g>
+</g>
 
-  <!-- Title -->
-  <text x="600" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="#e6edf3" text-anchor="middle">Rust for Data Engineering</text>
-  <text x="600" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#8b949e" text-anchor="middle">31-Course Specialization · Fast, Reliable &amp; Correct Data Pipelines</text>
+<!-- ROW 2 (chips 9–16) — y=350 -->
+<g id="row-2">
+  <!-- 9 Zig -->
+  <g><rect x="15"   y="350" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="15"   y="350" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="40"  cy="390" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="40"   y="396" text-anchor="middle" class="h" font-size="16" font-weight="700" fill="#dea584">9</text>
+     <text x="170"  y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Zig</text>
+  </g>
+  <!-- 10 GUI -->
+  <g><rect x="315"  y="350" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="315"  y="350" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="340" cy="390" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="340"  y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">10</text>
+     <text x="470"  y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Rust GUI</text>
+  </g>
+  <!-- 11 Terminal -->
+  <g><rect x="615"  y="350" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="615"  y="350" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="640" cy="390" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="640"  y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">11</text>
+     <text x="770"  y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Terminal</text>
+  </g>
+  <!-- 12 GCP -->
+  <g><rect x="915"  y="350" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="915"  y="350" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="940" cy="390" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="940"  y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">12</text>
+     <text x="1070" y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Rust on GCP</text>
+  </g>
+  <!-- 13 Shipping -->
+  <g><rect x="1215" y="350" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1215" y="350" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="1240" cy="390" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="1240" y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">13</text>
+     <text x="1370" y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Shipping Rust</text>
+  </g>
+  <!-- 14 Claude -->
+  <g><rect x="1515" y="350" width="270" height="80" rx="14" fill="url(#card-purple)" stroke="#b8acff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1515" y="350" width="270" height="4"  rx="2"  fill="url(#g-purple)"/>
+     <circle cx="1540" cy="390" r="16" fill="#0d1117" stroke="#b8acff" stroke-width="2"/>
+     <text x="1540" y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#b8acff">14</text>
+     <text x="1670" y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Claude</text>
+  </g>
+  <!-- 15 Rust CLI -->
+  <g><rect x="1815" y="350" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1815" y="350" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="1840" cy="390" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="1840" y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">15</text>
+     <text x="1970" y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Rust CLI</text>
+  </g>
+  <!-- 16 Graph Algos -->
+  <g><rect x="2115" y="350" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="2115" y="350" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="2140" cy="390" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="2140" y="396" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">16</text>
+     <text x="2270" y="398" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Graph Algos</text>
+  </g>
+</g>
 
-  <!-- Bottom tag -->
-  <text x="600" y="270" font-family="monospace" font-size="12" fill="#484f58" text-anchor="middle">paiml/rust-de-specialization</text>
+<!-- ROW 3 (chips 17–24) — y=450 -->
+<g id="row-3">
+  <!-- 17 MySQL -->
+  <g><rect x="15"   y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="15"   y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="40"  cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="40"   y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">17</text>
+     <text x="170"  y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">MySQL</text>
+  </g>
+  <!-- 18 Postgres -->
+  <g><rect x="315"  y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="315"  y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="340" cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="340"  y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">18</text>
+     <text x="470"  y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Postgres</text>
+  </g>
+  <!-- 19 RAG -->
+  <g><rect x="615"  y="450" width="270" height="80" rx="14" fill="url(#card-purple)" stroke="#b8acff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="615"  y="450" width="270" height="4"  rx="2"  fill="url(#g-purple)"/>
+     <circle cx="640" cy="490" r="16" fill="#0d1117" stroke="#b8acff" stroke-width="2"/>
+     <text x="640"  y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#b8acff">19</text>
+     <text x="770"  y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">RAG</text>
+  </g>
+  <!-- 20 DuckDB -->
+  <g><rect x="915"  y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="915"  y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="940" cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="940"  y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">20</text>
+     <text x="1070" y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">DuckDB</text>
+  </g>
+  <!-- 21 Valkey -->
+  <g><rect x="1215" y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1215" y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="1240" cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="1240" y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">21</text>
+     <text x="1370" y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Valkey</text>
+  </g>
+  <!-- 22 Monitoring -->
+  <g><rect x="1515" y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1515" y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="1540" cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="1540" y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">22</text>
+     <text x="1670" y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Monitoring</text>
+  </g>
+  <!-- 23 DataOps -->
+  <g><rect x="1815" y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1815" y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="1840" cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="1840" y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">23</text>
+     <text x="1970" y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">DataOps</text>
+  </g>
+  <!-- 24 HelixDB -->
+  <g><rect x="2115" y="450" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="2115" y="450" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="2140" cy="490" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="2140" y="496" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">24</text>
+     <text x="2270" y="498" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">HelixDB</text>
+  </g>
+</g>
+
+<!-- ROW 4 (chips 25–31, centered) — y=550 — 7 chips × 270w + 6×30 gap = 2070w → margin 165 -->
+<g id="row-4">
+  <!-- 25 Contracts -->
+  <g><rect x="165"  y="550" width="270" height="80" rx="14" fill="url(#card-green)" stroke="#7ee787" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="165"  y="550" width="270" height="4"  rx="2"  fill="url(#g-green)"/>
+     <circle cx="190" cy="590" r="16" fill="#0d1117" stroke="#7ee787" stroke-width="2"/>
+     <text x="190"  y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#7ee787">25</text>
+     <text x="320"  y="598" text-anchor="middle" class="h" font-size="24" font-weight="600" fill="#ffffff">Contracts</text>
+  </g>
+  <!-- 26 IaC -->
+  <g><rect x="465"  y="550" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="465"  y="550" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="490" cy="590" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="490"  y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">26</text>
+     <text x="620"  y="598" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">IaC</text>
+  </g>
+  <!-- 27 TUI -->
+  <g><rect x="765"  y="550" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="765"  y="550" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="790" cy="590" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="790"  y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">27</text>
+     <text x="920"  y="598" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">TUI</text>
+  </g>
+  <!-- 28 WASM -->
+  <g><rect x="1065" y="550" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1065" y="550" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="1090" cy="590" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="1090" y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">28</text>
+     <text x="1220" y="598" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">WASM</text>
+  </g>
+  <!-- 29 Bashrs -->
+  <g><rect x="1365" y="550" width="270" height="80" rx="14" fill="url(#card-orange)" stroke="#dea584" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1365" y="550" width="270" height="4"  rx="2"  fill="url(#g-orange)"/>
+     <circle cx="1390" cy="590" r="16" fill="#0d1117" stroke="#dea584" stroke-width="2"/>
+     <text x="1390" y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#dea584">29</text>
+     <text x="1520" y="598" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Bash to Rust</text>
+  </g>
+  <!-- 30 Big O -->
+  <g><rect x="1665" y="550" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1665" y="550" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="1690" cy="590" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="1690" y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">30</text>
+     <text x="1820" y="598" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">Big O</text>
+  </g>
+  <!-- 31 OO Patterns -->
+  <g><rect x="1965" y="550" width="270" height="80" rx="14" fill="url(#card-blue)" stroke="#58a6ff" stroke-width="2" stroke-opacity="0.65"/>
+     <rect x="1965" y="550" width="270" height="4"  rx="2"  fill="url(#g-blue)"/>
+     <circle cx="1990" cy="590" r="16" fill="#0d1117" stroke="#58a6ff" stroke-width="2"/>
+     <text x="1990" y="596" text-anchor="middle" class="h" font-size="15" font-weight="700" fill="#58a6ff">31</text>
+     <text x="2120" y="598" text-anchor="middle" class="h" font-size="26" font-weight="600" fill="#ffffff">OO Patterns</text>
+  </g>
+</g>
+
+<!-- ====================  FOOTER STATUS BAR  ==================== -->
+<g id="footer">
+  <!-- Bar background -->
+  <rect x="40" y="690" width="2320" height="56" rx="12" fill="#0d1117" fill-opacity="0.85" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Track legend (centered) -->
+  <!-- orange dot -->
+  <circle cx="280" cy="718" r="9" fill="url(#g-orange)"/>
+  <text x="300" y="724" class="label" font-size="20" font-weight="600" fill="#dea584">FOUNDATIONS · SYSTEMS</text>
+
+  <!-- blue dot -->
+  <circle cx="700" cy="718" r="9" fill="url(#g-blue)"/>
+  <text x="720" y="724" class="label" font-size="20" font-weight="600" fill="#58a6ff">DATA · DATABASES · ALGORITHMS</text>
+
+  <!-- purple dot -->
+  <circle cx="1240" cy="718" r="9" fill="url(#g-purple)"/>
+  <text x="1260" y="724" class="label" font-size="20" font-weight="600" fill="#b8acff">AI</text>
+
+  <!-- green dot -->
+  <circle cx="1330" cy="718" r="9" fill="url(#g-green)"/>
+  <text x="1350" y="724" class="label" font-size="20" font-weight="600" fill="#7ee787">METHODOLOGY · ETHICS</text>
+
+  <!-- Status counts (right side) -->
+  <text x="1820" y="724" class="label" font-size="20" font-weight="700" fill="#36b37e">● 21 LAUNCHED</text>
+  <text x="2050" y="724" class="label" font-size="20" font-weight="700" fill="#8b949e">○ 10 DRAFT</text>
+
+  <!-- Repo / curriculum line -->
+  <text x="1200" y="765" text-anchor="middle" class="m" font-size="16" fill="#484f58">paiml/rust-de-specialization · coursera.org/teach-specialization/rust/</text>
+</g>
+
+<!-- GRID PROTOCOL MANIFEST
+     canvas: 2400×800 (3:1 hero, high-resolution)
+     palette: dark navy bg + four track colors (orange / blue / purple / green)
+     text_elements: ~80 (chip labels + numbers + headline + subtitle + legend + status)
+     stroke_width_min: 2 (chip outlines)
+     font_size_min: 15 (chip number badges)
+     shape_count: ~160 (31 chips × ~4 elements + frame + legend + atmosphere)
+     gradients: 7 (bg, hex pattern, 4 track gradients, iridescent, 3 zone glows)
+     role: img (decorative + semantic, aria-labelledby title + desc)
+-->
 </svg>
