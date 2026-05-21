@@ -11,7 +11,7 @@
 
 **Fast, Reliable & Correct Data Pipelines in Rust.** A [31-Course Coursera Specialization](https://www.coursera.org/specializations/rust) that takes you from Rust fundamentals through embedded databases, async ETL, analytics, GUI work, parallelism, and compile-time correctness — all the way to formal-contract-gated production pipelines.
 
-> 🎓 **Enroll on Coursera:** <https://www.coursera.org/specializations/rust>
+> 🎓 **Enroll on Coursera** → <https://www.coursera.org/specializations/rust>
 
 ## Table of Contents
 
