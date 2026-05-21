@@ -7,9 +7,9 @@
   <img src="assets/hero.svg" alt="Rust for Data Engineering: Coursera Specialization" width="100%"/>
 </p>
 
-**Fast, Reliable & Correct Data Pipelines in Rust** — a **31-course Coursera specialization** that takes you from Rust fundamentals through embedded databases, async ETL, analytics, GUI, parallelism, and compile-time correctness, all the way to formal-contract-gated production pipelines.
+**Fast, Reliable & Correct Data Pipelines in Rust** — a **[31-course Coursera specialization](https://www.coursera.org/specializations/rust)** that takes you from Rust fundamentals through embedded databases, async ETL, analytics, GUI, parallelism, and compile-time correctness, all the way to formal-contract-gated production pipelines.
 
-Track the live curriculum at <https://www.coursera.org/teach-specialization/rust/>.
+Enroll in the specialization on Coursera: <https://www.coursera.org/specializations/rust>. (Maintainers can also track the live curriculum at <https://www.coursera.org/teach-specialization/rust/>.)
 
 ## Courses
 
