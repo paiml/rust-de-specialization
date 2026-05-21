@@ -1,0 +1,61 @@
+name: Coverage
+
+# Coverage runs separately from the PR gate so doc-only and small PRs
+# don't wait 5-8 minutes for llvm-cov instrumentation. Triggers:
+#   • daily at 06:00 UTC (catches drift overnight)
+#   • on push to main when Rust sources change
+#   • manual dispatch (workflow_dispatch button in the Actions tab)
+
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.rs'
+      - '**/Cargo.toml'
+      - '**/Cargo.lock'
+      - 'rust-toolchain*'
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  coverage:
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache
+          df -h /
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: llvm-tools-preview
+
+      # Same Swatinem/rust-cache as the PR gate — share the cache key so a
+      # warm PR build also primes the next coverage run.
+      - name: Cache Rust deps
+        uses: Swatinem/rust-cache@v2
+
+      # cargo-llvm-cov is published as a binary by taiki-e/install-action,
+      # which transparently caches the downloaded artifact across runs.
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
+
+      - name: Coverage gate (100% functions, 98%+ lines)
+        run: cargo llvm-cov --workspace --lib --fail-under-functions 100 --fail-under-lines 98
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: target/llvm-cov/
+          retention-days: 14
