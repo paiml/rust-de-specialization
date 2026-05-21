@@ -74,8 +74,8 @@ test-capstones: ## Validate 7 capstones and course structure
 		grep -q "## Share Your Work" "$$f" || { echo "FAIL: $$f missing Share Your Work"; exit 1; }; \
 	done
 	@echo "  All capstones have required sections"
-	@grep -q "7-Course" README.md || { echo "FAIL: README does not reference 7 courses"; exit 1; }
-	@echo "  README references 7 courses"
+	@grep -q "31-Course" README.md || { echo "FAIL: README does not reference 31 courses"; exit 1; }
+	@echo "  README references 31 courses"
 	@echo "=== Capstone validation passed ==="
 
 # ─── Lint ────────────────────────────────────────────────────────────────────────
