@@ -18,11 +18,7 @@
 - [What You'll Learn](#what-youll-learn)
 - [Courses](#courses)
 - [Capstone Projects](#capstone-projects)
-- [Quick Start](#quick-start)
-- [Course Design Standard](#course-design-standard)
-- [Repository Layout](#repository-layout)
 - [Instructors](#instructors)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## What You'll Learn
@@ -73,7 +69,7 @@ The full 31-Course catalog in Coursera dashboard order. 🟢 **Launched** = live
 | 30 | Big O Notation: Python to Rust | ⚪ Draft | Noah Gift | [paiml/big-o-python-to-rust](https://github.com/paiml/big-o-python-to-rust) |
 | 31 | OO: Python to Rust | ⚪ Draft | Noah Gift | [paiml/oo-python-to-rust](https://github.com/paiml/oo-python-to-rust) |
 
-> Draft courses are in production and will be linked to their Coursera landing pages as they launch. Snapshot taken 2026-05-21 from the Coursera dashboard.
+> Draft courses are in production and will be linked to their Coursera landing pages as they launch.
 
 ## Capstone Projects
 
@@ -88,65 +84,11 @@ Two courses ship **Playground Readings** — zero-install companion walkthroughs
 - [Course 1 — Rust from Zero](capstones/c01-capstone-reading.md): six lesson-aligned exercises covering Rust fundamentals.
 - [Course 3 — ETL Pipelines with Rust](capstones/c03-capstone-reading.md): eight lesson-aligned sections on async pools, typed row deserialization, idempotent migrations, RAII-rollback transactions, and row-aligned validation.
 
-## Quick Start
-
-**Prerequisites:** [Rust 1.75+](https://www.rust-lang.org/tools/install), [`make`](https://www.gnu.org/software/make/), and a POSIX shell.
-
-```bash
-git clone https://github.com/paiml/rust-de-specialization.git
-cd rust-de-specialization
-make check
-```
-
-### Common tasks
-
-```bash
-make help    # Show all available targets
-make lint    # Lint markdown files
-make test    # Validate course structure
-make check   # Run lint + test (the same gate CI uses)
-```
-
-## Course Design Standard
-
-Every course in the specialization follows the **PAIML Course Design Standard**:
-
-```
-Course → Module (3–5) → Lesson (1–2)
-          ↳ Key Terms (≤150w)
-          ↳ Videos (≤6 min each, max 3 per lesson)
-          ↳ Reflection (≤150w)
-```
-
-Each course is roughly **25–55 items** of 3–6 minute videos paired with per-lesson Key-Terms and Reflection readings, and ends with **one** course-end graded 5-question quiz at an 80% pass mark.
-
-**Banned items:** AI Coach, Dialogue, Role-Play, peer review, module-level graded quizzes, two-presenter videos, and supplementary readings.
-
-## Repository Layout
-
-```
-.
-├── assets/          # Hero image and shared visual assets
-├── capstones/       # Capstone project briefs and Playground readings
-├── config/          # Build and lint configuration
-├── contracts/       # Formal contracts for Course 25 (Design by Provable Contracts)
-├── demos/           # Course demos and runnable examples
-├── coursera-assets/ # Source materials shared with Coursera
-├── .github/         # CI workflows and repo automation
-├── CLAUDE.md        # Notes for AI-assisted contributors
-├── CONTRIBUTING.md  # How to contribute
-└── Makefile         # `make help` for the full task list
-```
-
 ## Instructors
 
 - **[Noah Gift](https://github.com/noahgift)** — Founder, Pragmatic AI Labs · Duke University faculty
 - **[Alfredo Deza](https://github.com/alfredodeza)** — Author and content creator · Python, Rust, DevOps, ML
 - **Liam Parker** — Rust educator
-
-## Contributing
-
-Issues, typo fixes, and new examples are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request, and run `make check` locally so CI stays green.
 
 ## License
 
