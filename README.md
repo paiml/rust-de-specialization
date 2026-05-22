@@ -17,6 +17,7 @@
 
 - [What You'll Learn](#what-youll-learn)
 - [Courses](#courses)
+- [Recommended Learning Sequence](./SEQUENCE.md) — phased re-ordering of the 31 courses by dependency
 - [Capstone Projects](#capstone-projects)
 - [Instructors](#instructors)
 - [License](#license)
@@ -34,6 +35,8 @@ The curriculum is organized into five tracks that mirror the modern data enginee
 ## Courses
 
 The full 31-Course catalog in Coursera dashboard order. 🟢 **Launched** = live on Coursera; ⚪ **Draft** = in production.
+
+> ⚠️ This is publication order, not learning order. For a phased, dependency-aware path through the spec, see [**SEQUENCE.md**](./SEQUENCE.md).
 
 | # | Course | Status | Instructor | Companion Repo |
 |---|---|---|---|---|
