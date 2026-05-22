@@ -1,6 +1,6 @@
 # Recommended Learning Sequence
 
-The 31 courses in the order you should take them. Status as of 2026-05-22: 🟢 launched · ⚪ draft.
+The 31 courses in the order you should take them. Status as of 2026-05-22: 🟢 launched (26) · ⚪ draft (5).
 
 | Order | # | Course | Status |
 |---|---|---|---|
@@ -16,19 +16,19 @@ The 31 courses in the order you should take them. Status as of 2026-05-22: 🟢 
 | 10 | 5 | [Polars from Zero](https://www.coursera.org/learn/polars) | 🟢 |
 | 11 | 18 | [Postgres from Zero](https://www.coursera.org/learn/postgres) | 🟢 |
 | 12 | 17 | [MySQL from Zero](https://www.coursera.org/learn/queries) | 🟢 |
-| 13 | 21 | Valkey from Zero | ⚪ |
-| 14 | 24 | HelixDB from Zero | ⚪ |
+| 13 | 21 | [Valkey from Zero](https://www.coursera.org/learn/valkey) | 🟢 |
+| 14 | 24 | [HelixDB from Zero](https://www.coursera.org/learn/helixdb) | 🟢 |
 | 15 | 3 | [ETL Pipelines with Rust](https://www.coursera.org/learn/etl) | 🟢 |
 | 16 | 22 | [Rust for Data Source Monitoring and Automation](https://www.coursera.org/learn/monitoring) | 🟢 |
 | 17 | 16 | [Graph Algorithms with Rust](https://www.coursera.org/learn/graph) | 🟢 |
 | 18 | 6 | [Rust Serverless](https://www.coursera.org/learn/lambda) | 🟢 |
 | 19 | 12 | [Rust on GCP](https://www.coursera.org/learn/rust-gcp) | 🟢 |
-| 20 | 26 | IaC from Zero | ⚪ |
+| 20 | 26 | [IaC from Zero](https://www.coursera.org/learn/iac) | 🟢 |
 | 21 | 23 | [Rust DataOps: CI/CD and Containers for Data Pipelines](https://www.coursera.org/learn/pipeline) | 🟢 |
 | 22 | 8 | [Agile With AI](https://www.coursera.org/learn/agile-with-ai) | 🟢 |
-| 23 | 14 | Claude from Zero | ⚪ |
+| 23 | 14 | [Claude from Zero](https://www.coursera.org/learn/claude) | 🟢 |
 | 24 | 19 | [RAG from Zero](https://www.coursera.org/learn/rag) | 🟢 |
-| 25 | 25 | Design by Provable Contracts | ⚪ |
+| 25 | 25 | [Design by Provable Contracts](https://www.coursera.org/learn/dbc) | 🟢 |
 | 26 | 9 | [Zig from Zero](https://www.coursera.org/learn/zig) | 🟢 |
 | 27 | 4 | [Linux Desktop from Zero](https://www.coursera.org/learn/linux) | 🟢 |
 | 28 | 27 | TUI from Zero | ⚪ |

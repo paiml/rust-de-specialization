@@ -54,19 +54,19 @@ Two views of the same 31 courses: **dashboard order** (publication order, below)
 | 11 | [Terminal from Zero](https://www.coursera.org/learn/terminal) | 🟢 Launched | Noah Gift | — |
 | 12 | [Rust on GCP](https://www.coursera.org/learn/rust-gcp) | 🟢 Launched | Noah Gift | — |
 | 13 | [Shipping Rust](https://www.coursera.org/learn/ship) | 🟢 Launched | Noah Gift | [paiml/shipping-rust](https://github.com/paiml/shipping-rust) |
-| 14 | Claude from Zero | ⚪ Draft | Noah Gift | [paiml/claude-from-zero](https://github.com/paiml/claude-from-zero) |
+| 14 | [Claude from Zero](https://www.coursera.org/learn/claude) | 🟢 Launched | Noah Gift | [paiml/claude-from-zero](https://github.com/paiml/claude-from-zero) |
 | 15 | [Rust CLI from Zero](https://www.coursera.org/learn/cli) | 🟢 Launched | Alfredo Deza | [paiml/rust-cli](https://github.com/paiml/rust-cli) |
 | 16 | [Graph Algorithms with Rust](https://www.coursera.org/learn/graph) | 🟢 Launched | Noah Gift | [paiml/rust-graph-algorithms](https://github.com/paiml/rust-graph-algorithms) |
 | 17 | [MySQL from Zero](https://www.coursera.org/learn/queries) | 🟢 Launched | Alfredo Deza | [paiml/mysql-from-zero](https://github.com/paiml/mysql-from-zero) |
 | 18 | [Postgres from Zero](https://www.coursera.org/learn/postgres) | 🟢 Launched | Alfredo Deza | [paiml/postgres-from-zero](https://github.com/paiml/postgres-from-zero) |
 | 19 | [RAG from Zero](https://www.coursera.org/learn/rag) | 🟢 Launched | Noah Gift | [paiml/rag-from-zero](https://github.com/paiml/rag-from-zero) |
 | 20 | [DuckDB from Zero](https://www.coursera.org/learn/duckdb) | 🟢 Launched | Alfredo Deza | [paiml/duckdb-from-zero](https://github.com/paiml/duckdb-from-zero) |
-| 21 | Valkey from Zero | ⚪ Draft | Noah Gift | [paiml/valkey-from-zero](https://github.com/paiml/valkey-from-zero) |
+| 21 | [Valkey from Zero](https://www.coursera.org/learn/valkey) | 🟢 Launched | Noah Gift | [paiml/valkey-from-zero](https://github.com/paiml/valkey-from-zero) |
 | 22 | [Rust for Data Source Monitoring and Automation](https://www.coursera.org/learn/monitoring) | 🟢 Launched | Alfredo Deza | [this repo](https://github.com/paiml/rust-de-specialization) |
 | 23 | [Rust DataOps: CI/CD and Containers for Data Pipelines](https://www.coursera.org/learn/pipeline) | 🟢 Launched | Alfredo Deza | [this repo](https://github.com/paiml/rust-de-specialization) |
-| 24 | HelixDB from Zero | ⚪ Draft | Noah Gift | [paiml/helixdb-from-zero](https://github.com/paiml/helixdb-from-zero) |
-| 25 | Design by Provable Contracts | ⚪ Draft | Noah Gift | [paiml/design-by-provable-contracts](https://github.com/paiml/design-by-provable-contracts) |
-| 26 | IaC from Zero | ⚪ Draft | Noah Gift | [paiml/iac-from-zero](https://github.com/paiml/iac-from-zero) |
+| 24 | [HelixDB from Zero](https://www.coursera.org/learn/helixdb) | 🟢 Launched | Noah Gift | [paiml/helixdb-from-zero](https://github.com/paiml/helixdb-from-zero) |
+| 25 | [Design by Provable Contracts](https://www.coursera.org/learn/dbc) | 🟢 Launched | Noah Gift | [paiml/design-by-provable-contracts](https://github.com/paiml/design-by-provable-contracts) |
+| 26 | [IaC from Zero](https://www.coursera.org/learn/iac) | 🟢 Launched | Noah Gift | [paiml/iac-from-zero](https://github.com/paiml/iac-from-zero) |
 | 27 | TUI from Zero | ⚪ Draft | Noah Gift | [paiml/tui-from-zero](https://github.com/paiml/tui-from-zero) |
 | 28 | WASM from Zero | ⚪ Draft | Noah Gift | [paiml/wasm-from-zero](https://github.com/paiml/wasm-from-zero) |
 | 29 | Bash to Rust: From Zero | ⚪ Draft | Noah Gift | [paiml/bashrs-from-zero](https://github.com/paiml/bashrs-from-zero) |
@@ -93,19 +93,19 @@ The same 31 courses, re-ordered for learning. Canonical source: [SEQUENCE.md](./
 | 10 | 5 | [Polars from Zero](https://www.coursera.org/learn/polars) | 🟢 |
 | 11 | 18 | [Postgres from Zero](https://www.coursera.org/learn/postgres) | 🟢 |
 | 12 | 17 | [MySQL from Zero](https://www.coursera.org/learn/queries) | 🟢 |
-| 13 | 21 | Valkey from Zero | ⚪ |
-| 14 | 24 | HelixDB from Zero | ⚪ |
+| 13 | 21 | [Valkey from Zero](https://www.coursera.org/learn/valkey) | 🟢 |
+| 14 | 24 | [HelixDB from Zero](https://www.coursera.org/learn/helixdb) | 🟢 |
 | 15 | 3 | [ETL Pipelines with Rust](https://www.coursera.org/learn/etl) | 🟢 |
 | 16 | 22 | [Rust for Data Source Monitoring and Automation](https://www.coursera.org/learn/monitoring) | 🟢 |
 | 17 | 16 | [Graph Algorithms with Rust](https://www.coursera.org/learn/graph) | 🟢 |
 | 18 | 6 | [Rust Serverless](https://www.coursera.org/learn/lambda) | 🟢 |
 | 19 | 12 | [Rust on GCP](https://www.coursera.org/learn/rust-gcp) | 🟢 |
-| 20 | 26 | IaC from Zero | ⚪ |
+| 20 | 26 | [IaC from Zero](https://www.coursera.org/learn/iac) | 🟢 |
 | 21 | 23 | [Rust DataOps: CI/CD and Containers for Data Pipelines](https://www.coursera.org/learn/pipeline) | 🟢 |
 | 22 | 8 | [Agile With AI](https://www.coursera.org/learn/agile-with-ai) | 🟢 |
-| 23 | 14 | Claude from Zero | ⚪ |
+| 23 | 14 | [Claude from Zero](https://www.coursera.org/learn/claude) | 🟢 |
 | 24 | 19 | [RAG from Zero](https://www.coursera.org/learn/rag) | 🟢 |
-| 25 | 25 | Design by Provable Contracts | ⚪ |
+| 25 | 25 | [Design by Provable Contracts](https://www.coursera.org/learn/dbc) | 🟢 |
 | 26 | 9 | [Zig from Zero](https://www.coursera.org/learn/zig) | 🟢 |
 | 27 | 4 | [Linux Desktop from Zero](https://www.coursera.org/learn/linux) | 🟢 |
 | 28 | 27 | TUI from Zero | ⚪ |
