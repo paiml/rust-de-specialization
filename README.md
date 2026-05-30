@@ -35,7 +35,7 @@ The curriculum is organized into five tracks that mirror the modern data enginee
 
 ## Courses
 
-Two views of the same 31 courses: **dashboard order** (publication order, below) and **recommended learning sequence** (re-ordered for dependency, [further down](#recommended-learning-sequence)). 🟢 **Launched** = live on Coursera; ⚪ **Draft** = in production.
+Two views of the same 31 courses: **dashboard order** (publication order, below) and **recommended learning sequence** (re-ordered for dependency, [further down](#recommended-learning-sequence)). All 31 are 🟢 **Launched** (live on Coursera).
 
 ### Dashboard Order
 
@@ -67,13 +67,12 @@ Two views of the same 31 courses: **dashboard order** (publication order, below)
 | 24 | [HelixDB from Zero](https://www.coursera.org/learn/helixdb) | 🟢 Launched | Noah Gift | [paiml/helixdb-from-zero](https://github.com/paiml/helixdb-from-zero) |
 | 25 | [Design by Provable Contracts](https://www.coursera.org/learn/dbc) | 🟢 Launched | Noah Gift | [paiml/design-by-provable-contracts](https://github.com/paiml/design-by-provable-contracts) |
 | 26 | [IaC from Zero](https://www.coursera.org/learn/iac) | 🟢 Launched | Noah Gift | [paiml/iac-from-zero](https://github.com/paiml/iac-from-zero) |
-| 27 | TUI from Zero | ⚪ Draft | Noah Gift | [paiml/tui-from-zero](https://github.com/paiml/tui-from-zero) |
-| 28 | WASM from Zero | ⚪ Draft | Noah Gift | [paiml/wasm-from-zero](https://github.com/paiml/wasm-from-zero) |
-| 29 | Bash to Rust: From Zero | ⚪ Draft | Noah Gift | [paiml/bashrs-from-zero](https://github.com/paiml/bashrs-from-zero) |
-| 30 | Big O Notation: Python to Rust | ⚪ Draft | Noah Gift | [paiml/big-o-python-to-rust](https://github.com/paiml/big-o-python-to-rust) |
-| 31 | OO: Python to Rust | ⚪ Draft | Noah Gift | [paiml/oo-python-to-rust](https://github.com/paiml/oo-python-to-rust) |
+| 27 | [TUI from Zero](https://www.coursera.org/learn/tui) | 🟢 Launched | Noah Gift | [paiml/tui-from-zero](https://github.com/paiml/tui-from-zero) |
+| 28 | [WASM from Zero](https://www.coursera.org/learn/wasm) | 🟢 Launched | Noah Gift | [paiml/wasm-from-zero](https://github.com/paiml/wasm-from-zero) |
+| 29 | [Bash to Rust: From Zero](https://www.coursera.org/learn/bashrs) | 🟢 Launched | Noah Gift | [paiml/bashrs-from-zero](https://github.com/paiml/bashrs-from-zero) |
+| 30 | [Big O Notation: Python to Rust](https://www.coursera.org/learn/bigo) | 🟢 Launched | Noah Gift | [paiml/big-o-python-to-rust](https://github.com/paiml/big-o-python-to-rust) |
+| 31 | [OO: Python to Rust](https://www.coursera.org/learn/oo) | 🟢 Launched | Noah Gift | [paiml/oo-python-to-rust](https://github.com/paiml/oo-python-to-rust) |
 
-> Draft courses are in production and will be linked to their Coursera landing pages as they launch.
 
 ### Recommended Learning Sequence
 
@@ -85,9 +84,9 @@ The same 31 courses, re-ordered for learning. Canonical source: [SEQUENCE.md](./
 | 2 | 11 | [Terminal from Zero](https://www.coursera.org/learn/terminal) | 🟢 |
 | 3 | 15 | [Rust CLI from Zero](https://www.coursera.org/learn/cli) | 🟢 |
 | 4 | 13 | [Shipping Rust](https://www.coursera.org/learn/ship) | 🟢 |
-| 5 | 30 | Big O Notation: Python to Rust | ⚪ |
-| 6 | 31 | OO: Python to Rust | ⚪ |
-| 7 | 29 | Bash to Rust: From Zero | ⚪ |
+| 5 | 30 | [Big O Notation: Python to Rust](https://www.coursera.org/learn/bigo) | 🟢 |
+| 6 | 31 | [OO: Python to Rust](https://www.coursera.org/learn/oo) | 🟢 |
+| 7 | 29 | [Bash to Rust: From Zero](https://www.coursera.org/learn/bashrs) | 🟢 |
 | 8 | 2 | [SQLite for Rust](https://www.coursera.org/learn/sqlite) | 🟢 |
 | 9 | 20 | [DuckDB from Zero](https://www.coursera.org/learn/duckdb) | 🟢 |
 | 10 | 5 | [Polars from Zero](https://www.coursera.org/learn/polars) | 🟢 |
@@ -108,9 +107,9 @@ The same 31 courses, re-ordered for learning. Canonical source: [SEQUENCE.md](./
 | 25 | 25 | [Design by Provable Contracts](https://www.coursera.org/learn/dbc) | 🟢 |
 | 26 | 9 | [Zig from Zero](https://www.coursera.org/learn/zig) | 🟢 |
 | 27 | 4 | [Linux Desktop from Zero](https://www.coursera.org/learn/linux) | 🟢 |
-| 28 | 27 | TUI from Zero | ⚪ |
+| 28 | 27 | [TUI from Zero](https://www.coursera.org/learn/tui) | 🟢 |
 | 29 | 10 | [Rust GUI from Zero](https://www.coursera.org/learn/gui) | 🟢 |
-| 30 | 28 | WASM from Zero | ⚪ |
+| 30 | 28 | [WASM from Zero](https://www.coursera.org/learn/wasm) | 🟢 |
 | 31 | 7 | [Data Ethics](https://www.coursera.org/learn/ethical) | 🟢 |
 
 ## Capstone Projects
