@@ -115,12 +115,14 @@ The same 31 courses, re-ordered for learning. Canonical source: [SEQUENCE.md](./
 
 ## Run the Demos
 
-The seven demo crates build with the Rust toolchain pinned in `rust-toolchain.toml` (1.95.0, with `rustfmt`, `clippy` and `llvm-tools-preview`). Nothing else needs installing. The same steps run in CI.
+The seven demo crates build with the Rust toolchain pinned in `rust-toolchain.toml` (1.95.0, with `rustfmt`, `clippy` and `llvm-tools-preview`). Ubuntu also needs a C linker (`build-essential`); macOS needs the Xcode Command Line Tools. The same steps run in CI.
 
 ### Linux (Ubuntu 24.04)
 
 ```bash
+sudo apt-get update && sudo apt-get install -y build-essential curl
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.95.0 --component clippy --component rustfmt
+. "$HOME/.cargo/env"
 cargo test --workspace
 ```
 
@@ -129,7 +131,9 @@ cargo test --workspace
 The weekly canary runs the same build on macOS.
 
 ```bash
+xcode-select --install   # skip if already installed
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.95.0 --component clippy --component rustfmt
+. "$HOME/.cargo/env"
 cargo test --workspace
 ```
 
