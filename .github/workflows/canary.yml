@@ -1,0 +1,41 @@
+name: canary
+
+# Weekly check that the learner build still works on the newest hosted
+# images, so a learner does not find a break first.
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+
+jobs:
+  learner-build:
+    name: learner-build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry/index
+            ~/.cargo/registry/cache
+            ~/.cargo/git/db
+            target
+          key: canary-${{ runner.os }}-${{ hashFiles('Cargo.lock') }}
+          restore-keys: |
+            canary-${{ runner.os }}-
+
+      - name: Test
+        run: cargo test --workspace
