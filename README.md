@@ -3,7 +3,7 @@
 [![CI](https://github.com/paiml/rust-de-specialization/actions/workflows/ci.yml/badge.svg)](https://github.com/paiml/rust-de-specialization/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Coursera](https://img.shields.io/badge/Coursera-Specialization-2A73CC?logo=coursera&logoColor=white)](https://www.coursera.org/specializations/rust)
-[![Rust](https://img.shields.io/badge/Rust-1.75%2B-orange?logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![Rust](https://img.shields.io/badge/Rust-1.95-orange?logo=rust&logoColor=white)](https://www.rust-lang.org/)
 
 <p align="center">
   <img src="assets/hero.svg" alt="Rust for Data Engineering: Coursera Specialization" width="100%"/>
@@ -19,6 +19,7 @@
 - [Courses](#courses)
   - [Dashboard Order](#dashboard-order) — publication order
   - [Recommended Learning Sequence](#recommended-learning-sequence) — order to take them in
+- [Run the Demos](#run-the-demos)
 - [Capstone Projects](#capstone-projects)
 - [Instructors](#instructors)
 - [License](#license)
@@ -111,6 +112,26 @@ The same 31 courses, re-ordered for learning. Canonical source: [SEQUENCE.md](./
 | 29 | 10 | [Rust GUI from Zero](https://www.coursera.org/learn/gui) | 🟢 |
 | 30 | 28 | [WASM from Zero](https://www.coursera.org/learn/wasm) | 🟢 |
 | 31 | 7 | [Data Ethics](https://www.coursera.org/learn/ethical) | 🟢 |
+
+## Run the Demos
+
+The seven demo crates build with the Rust toolchain pinned in `rust-toolchain.toml` (1.95.0, with `rustfmt`, `clippy` and `llvm-tools-preview`). Nothing else needs installing. The same steps run in CI.
+
+### Linux (Ubuntu 24.04)
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.95.0 --component clippy --component rustfmt
+cargo test --workspace
+```
+
+### macOS
+
+The weekly canary runs the same build on macOS.
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.95.0 --component clippy --component rustfmt
+cargo test --workspace
+```
 
 ## Capstone Projects
 
