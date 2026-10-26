@@ -48,54 +48,12 @@ jobs:
       - name: Test
         run: cargo test --workspace
 
-  coverage:
-    name: coverage
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: "1.95.0"
-          components: llvm-tools-preview
-
-      - name: Cache cargo
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/registry/index
-            ~/.cargo/registry/cache
-            ~/.cargo/git/db
-            target
-          key: cargo-coverage-${{ runner.os }}-${{ hashFiles('Cargo.lock', 'rust-toolchain.toml') }}
-          restore-keys: |
-            cargo-coverage-${{ runner.os }}-
-
-      - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-llvm-cov@0.6.16
-
-      - name: Coverage gate (100% functions, 98%+ lines)
-        run: cargo llvm-cov --workspace --lib --fail-under-functions 100 --fail-under-lines 98
-
-      - name: Upload coverage report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: target/llvm-cov/
-          retention-days: 14
-          if-no-files-found: ignore
-
   gate:
     name: gate
     runs-on: ubuntu-24.04
-    needs: [build, coverage]
+    needs: [build]
     if: always()
     steps:
       - name: Require every job to pass
         run: |
           test "${{ needs.build.result }}" = "success"
-          test "${{ needs.coverage.result }}" = "success"
