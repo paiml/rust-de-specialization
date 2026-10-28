@@ -23,7 +23,7 @@ source:
     }
 
     impl TrackedAlloc {
-        fn new(payload: &str) -> Self {
+        fn new(payload: &'static str) -> Self {
             Self { payload: payload.to_owned() }
         }
         fn len(&self) -> usize {
