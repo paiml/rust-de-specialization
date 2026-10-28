@@ -1,0 +1,28 @@
+version: 1
+lesson_id: "1.3.2"
+course_id: "c2-sqlite-rust"
+concept: "error_mapping_from_impl"
+description: >
+  Lesson 1.3.2 Playground Proof: a low-level unique-violation maps to a typed DuplicateName error, other failures wrap via From and the question-mark operator. Expected stdout "errors: duplicate fruit name: apple", exit 0.
+
+source:
+  demo_crate: "c2-sqlite-rust"
+  demo_bin: "l132_error_mapping_from_impl"
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "errors: duplicate fruit name: apple"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"

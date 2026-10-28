@@ -1,0 +1,28 @@
+version: 1
+lesson_id: "2.1.2"
+course_id: "c2-sqlite-rust"
+concept: "csv_rows_parse_or_reject"
+description: >
+  Lesson 2.1.2 Playground Proof: CSV rows parse into typed records or yield a named error, and a malformed row never aborts the batch. Expected stdout "csv: 2 parsed, 1 rejected", exit 0.
+
+source:
+  demo_crate: "c2-sqlite-rust"
+  demo_bin: "l212_csv_rows_parse_or_reject"
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "csv: 2 parsed, 1 rejected"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"

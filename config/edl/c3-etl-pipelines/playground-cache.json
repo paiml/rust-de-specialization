@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "updated_at": "2026-10-28T12:17:08.081049325Z",
+  "entries": {
+    "2.1.1-playground": {
+      "contract_sha256": "d1724af095ae2315b8d4dbe7b65af796c1efe20b6b764556cb89d709151565c6",
+      "code_sha256": "26a4d030d832ab4970344447e3f793537e64bd6354875e92fe1512bd62063c4f",
+      "gist_id": "2b1a1c42a47266c97cf0976a56390a21",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=2b1a1c42a47266c97cf0976a56390a21",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:16:48.947852889Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "totality: 3 + 3 = 6\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.1.2-playground": {
+      "contract_sha256": "5c3272a27e3a571055d42bfb86566b155bcaec69d35a4de5dcfedbd4eca2afba",
+      "code_sha256": "e3b0219b084538d0cb8824f18d15cf51a2f8016648c9b67a1fd608b7c6809243",
+      "gist_id": "038c9d725d1f849d0d2cb27833237c69",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=038c9d725d1f849d0d2cb27833237c69",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:16:55.288052506Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "validation: all defects reported per row\n",
+      "proof_kind": "runtime_assert"
+    },
+    "1.2.1-playground": {
+      "contract_sha256": "5b54e70147095bb070148aa54af8f0b429d130d8b923f1e3bc8c75e6f00c6a5a",
+      "code_sha256": "0c8278d51753b85ef1dc6acc65bcf718b60a757776264f87b07ae421d7e4bd5a",
+      "gist_id": "df234901c499253dc52882f7d731b97b",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=df234901c499253dc52882f7d731b97b",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:16:35.870538047Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "garbage row: 3 good, row 3 rejected\n",
+      "proof_kind": "runtime_assert"
+    },
+    "1.2.3-playground": {
+      "contract_sha256": "1119d237f8fa1c1c06b43c5c4acd76401f7fd575d486710a95a09dba70cf291c",
+      "code_sha256": "1988d6a5253e6f43050aa4faa773f057c3e4cfae59d63af69c07f442e5ccb566",
+      "gist_id": "d19bc9c07ddd6a0aced4a30eb18d7335",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=d19bc9c07ddd6a0aced4a30eb18d7335",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:16:42.355421319Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "read trait: 3 rows from both sources\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.2.1-playground": {
+      "contract_sha256": "d73308bf28910b3a282ba90bdf025f716bf383a2890f0163241b4f2980de2bfc",
+      "code_sha256": "633c011333335acb201c82d6023ca2c9eb4e364496f2e995f3ee04e7f8fa7164",
+      "gist_id": "e2918d57ae63a6f6a8d482ae947a8627",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=e2918d57ae63a6f6a8d482ae947a8627",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:17:08.081044187Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "computed columns: 150 cents, 120 g\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.1.3-playground": {
+      "contract_sha256": "f9eeccea1c07e0e28be2661a3e0c0deb16cb1869e29626041c97a133040ce03c",
+      "code_sha256": "02e677744645ecb7fcc23f9f806d6c4030357158c7937baab253360d0633c850",
+      "gist_id": "feb76679b1fbe7a80e09b280c8291d1b",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=feb76679b1fbe7a80e09b280c8291d1b",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:17:01.683381551Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "normalize: idempotent\n",
+      "proof_kind": "runtime_assert"
+    }
+  }
+}
