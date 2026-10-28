@@ -181,7 +181,7 @@ Expected output contains: `validation: all defects reported per row`
 
 ## Section 5 — Lesson 2.1.3: normalization idempotent
 
-**Contract:** Normalizing a value twice gives the same result as normalizing it once.
+**Contract:** Normalizing a name or a category twice gives the same result as normalizing it once.
 
 ```rust
 fn normalize_name(s: &str) -> String {
@@ -207,17 +207,25 @@ fn main() {
             "normalize must be idempotent for {raw:?}"
         );
     }
+    for raw in [" Tropical\t", "pome", "", "  MIXED case "] {
+        let once = normalize_category(raw);
+        assert_eq!(
+            normalize_category(&once),
+            once,
+            "normalize must be idempotent for {raw:?}"
+        );
+    }
     println!("normalize: idempotent");
 }
 ```
 
-▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=feb76679b1fbe7a80e09b280c8291d1b>
+▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=a3856061d2c232ebc21ceeaf9b45d19a>
 
 Expected output contains: `normalize: idempotent`
 
 ## Section 6 — Lesson 2.2.1: computed columns exact cents
 
-**Contract:** Computed columns round to exact integer cents and grams so float noise like 1.10*100 cannot leak into the output.
+**Contract:** Computed columns round to exact integer cents and grams, so float noise like 0.29*100 = 28.999999999999996 cannot truncate to the wrong value.
 
 ```rust
 fn price_cents(price: f64) -> u64 {
@@ -236,6 +244,8 @@ fn main() {
     // 1.10 * 100 is 110.00000000000001 in f64: rounding keeps it exact.
     assert_eq!(price_cents(1.10), 110);
     assert_eq!(price_cents(0.30), 30);
+    // 0.29 * 100 is 28.999999999999996: truncating would give 28, rounding gives 29.
+    assert_eq!(price_cents(0.29), 29);
     assert_eq!(weight_grams(0.18), 180);
     assert!((margin_pct(150, 100) - 33.333).abs() < 0.01);
     println!(
@@ -246,7 +256,7 @@ fn main() {
 }
 ```
 
-▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=e2918d57ae63a6f6a8d482ae947a8627>
+▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=e5c50c30e684e59e5746c48379e939b6>
 
 Expected output contains: `computed columns: 150 cents, 120 g`
 

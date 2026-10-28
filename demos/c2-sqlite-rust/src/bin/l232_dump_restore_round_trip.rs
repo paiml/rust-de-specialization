@@ -1,8 +1,14 @@
+fn quote(s: &str) -> String {
+    // SQLite doubles a single quote inside a string literal.
+    format!("'{}'", s.replace('\'', "''"))
+}
+
 fn dump(rows: &[(i64, &str, u64)]) -> String {
     let mut out = String::new();
     for (id, name, price) in rows {
         out.push_str(&format!(
-            "INSERT INTO fruits VALUES({id},'{name}',{price});\n"
+            "INSERT INTO fruits VALUES({id},{},{price});\n",
+            quote(name)
         ));
     }
     out
@@ -16,17 +22,22 @@ fn restore(script: &str) -> Vec<(i64, String, u64)> {
                 .strip_prefix("INSERT INTO fruits VALUES(")
                 .and_then(|r| r.strip_suffix(");"))
                 .expect("dump line has the INSERT shape");
-            let mut p = inner.split(',');
-            let id = p.next().unwrap().parse().unwrap();
-            let name = p.next().unwrap().trim_matches('\'').to_string();
-            let price = p.next().unwrap().parse().unwrap();
-            (id, name, price)
+            let (id, rest) = inner.split_once(',').unwrap();
+            // The price follows the last comma; the quoted name sits between.
+            let (quoted, price) = rest.rsplit_once(',').unwrap();
+            let name = quoted[1..quoted.len() - 1].replace("''", "'");
+            (id.parse().unwrap(), name, price.parse().unwrap())
         })
         .collect()
 }
 
 fn main() {
-    let rows = [(1, "apple", 150), (2, "banana", 30), (3, "cherry", 600)];
+    let rows = [
+        (1, "apple", 150),
+        (2, "banana", 30),
+        (3, "cherry, red", 600),
+        (4, "o'brien plum", 90),
+    ];
     let script = dump(&rows);
     let back = restore(&script);
     let expected: Vec<(i64, String, u64)> = rows

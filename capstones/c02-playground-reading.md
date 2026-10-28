@@ -236,13 +236,13 @@ fn main() {
     };
     assert_eq!(t.bulk_import(&[("apple", 150), ("pear", 90)]), Ok(2));
     assert_eq!(t.committed.len(), 2);
+    let before = t.committed.clone();
 
     let bad = t.bulk_import(&[("plum", 70), ("ghost", 0), ("fig", 200)]);
     assert_eq!(bad, Err(InventoryError::InvalidPrice(0)));
     assert_eq!(
-        t.committed.len(),
-        2,
-        "a failed batch must leave zero rows behind"
+        t.committed, before,
+        "a failed batch must leave the committed rows untouched"
     );
     println!(
         "transaction: rolled back, {} rows committed",
@@ -251,7 +251,7 @@ fn main() {
 }
 ```
 
-▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=044fbdda3e7d8630dd64ebce142913ad>
+▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=ff31cfae13905c453162f81792c52c30>
 
 Expected output contains: `transaction: rolled back, 2 rows committed`
 
@@ -318,14 +318,20 @@ Expected output contains: `csv: 2 parsed, 1 rejected`
 
 ## Section 6 — Lesson 2.3.2: dump restore round trip
 
-**Contract:** Dumping rows to INSERT statements and restoring them reproduces every row exactly.
+**Contract:** Dumping rows to INSERT statements, with single quotes doubled as SQLite does, and restoring them reproduces every row exactly, including names with commas and quotes.
 
 ```rust
+fn quote(s: &str) -> String {
+    // SQLite doubles a single quote inside a string literal.
+    format!("'{}'", s.replace('\'', "''"))
+}
+
 fn dump(rows: &[(i64, &str, u64)]) -> String {
     let mut out = String::new();
     for (id, name, price) in rows {
         out.push_str(&format!(
-            "INSERT INTO fruits VALUES({id},'{name}',{price});\n"
+            "INSERT INTO fruits VALUES({id},{},{price});\n",
+            quote(name)
         ));
     }
     out
@@ -339,17 +345,22 @@ fn restore(script: &str) -> Vec<(i64, String, u64)> {
                 .strip_prefix("INSERT INTO fruits VALUES(")
                 .and_then(|r| r.strip_suffix(");"))
                 .expect("dump line has the INSERT shape");
-            let mut p = inner.split(',');
-            let id = p.next().unwrap().parse().unwrap();
-            let name = p.next().unwrap().trim_matches('\'').to_string();
-            let price = p.next().unwrap().parse().unwrap();
-            (id, name, price)
+            let (id, rest) = inner.split_once(',').unwrap();
+            // The price follows the last comma; the quoted name sits between.
+            let (quoted, price) = rest.rsplit_once(',').unwrap();
+            let name = quoted[1..quoted.len() - 1].replace("''", "'");
+            (id.parse().unwrap(), name, price.parse().unwrap())
         })
         .collect()
 }
 
 fn main() {
-    let rows = [(1, "apple", 150), (2, "banana", 30), (3, "cherry", 600)];
+    let rows = [
+        (1, "apple", 150),
+        (2, "banana", 30),
+        (3, "cherry, red", 600),
+        (4, "o'brien plum", 90),
+    ];
     let script = dump(&rows);
     let back = restore(&script);
     let expected: Vec<(i64, String, u64)> = rows
@@ -362,9 +373,9 @@ fn main() {
 }
 ```
 
-▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=de318fee3e8226a843d7b3875d20dc48>
+▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=c73fafb02d084dab7401bfc03cf82a2c>
 
-Expected output contains: `dump: 3 rows round-tripped`
+Expected output contains: `dump: 4 rows round-tripped`
 
 ## Contract summary
 
@@ -375,4 +386,4 @@ Expected output contains: `dump: 3 rows round-tripped`
 | 3 | 1.3.2 | error mapping from impl | `assert!`/`assert_eq!` in the snippet | `errors: duplicate fruit name: apple` |
 | 4 | 1.3.4 | transaction rollback all or nothing | `assert!`/`assert_eq!` in the snippet | `transaction: rolled back, 2 rows committed` |
 | 5 | 2.1.2 | csv rows parse or reject | `assert!`/`assert_eq!` in the snippet | `csv: 2 parsed, 1 rejected` |
-| 6 | 2.3.2 | dump restore round trip | `assert!`/`assert_eq!` in the snippet | `dump: 3 rows round-tripped` |
+| 6 | 2.3.2 | dump restore round trip | `assert!`/`assert_eq!` in the snippet | `dump: 4 rows round-tripped` |

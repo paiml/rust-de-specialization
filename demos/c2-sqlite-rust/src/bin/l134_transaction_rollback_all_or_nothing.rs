@@ -30,13 +30,13 @@ fn main() {
     };
     assert_eq!(t.bulk_import(&[("apple", 150), ("pear", 90)]), Ok(2));
     assert_eq!(t.committed.len(), 2);
+    let before = t.committed.clone();
 
     let bad = t.bulk_import(&[("plum", 70), ("ghost", 0), ("fig", 200)]);
     assert_eq!(bad, Err(InventoryError::InvalidPrice(0)));
     assert_eq!(
-        t.committed.len(),
-        2,
-        "a failed batch must leave zero rows behind"
+        t.committed, before,
+        "a failed batch must leave the committed rows untouched"
     );
     println!(
         "transaction: rolled back, {} rows committed",

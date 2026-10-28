@@ -21,5 +21,13 @@ fn main() {
             "normalize must be idempotent for {raw:?}"
         );
     }
+    for raw in [" Tropical\t", "pome", "", "  MIXED case "] {
+        let once = normalize_category(raw);
+        assert_eq!(
+            normalize_category(&once),
+            once,
+            "normalize must be idempotent for {raw:?}"
+        );
+    }
     println!("normalize: idempotent");
 }

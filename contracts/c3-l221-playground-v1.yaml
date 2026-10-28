@@ -3,7 +3,7 @@ lesson_id: "2.2.1"
 course_id: "c3-etl-pipelines"
 concept: "computed_columns_exact_cents"
 description: >
-  Lesson 2.2.1 Playground Proof: computed columns round to exact integer cents and grams so float noise like 1.10*100 cannot leak into the output. Expected stdout "computed columns: 150 cents, 120 g", exit 0.
+  Lesson 2.2.1 Playground Proof: computed columns round to exact integer cents and grams, so float noise like 0.29*100 = 28.999999999999996 cannot truncate to the wrong value. Expected stdout "computed columns: 150 cents, 120 g", exit 0.
 
 source:
   demo_crate: "c3-etl-pipelines"

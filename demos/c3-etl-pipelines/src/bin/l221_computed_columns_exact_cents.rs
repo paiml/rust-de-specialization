@@ -14,6 +14,8 @@ fn main() {
     // 1.10 * 100 is 110.00000000000001 in f64: rounding keeps it exact.
     assert_eq!(price_cents(1.10), 110);
     assert_eq!(price_cents(0.30), 30);
+    // 0.29 * 100 is 28.999999999999996: truncating would give 28, rounding gives 29.
+    assert_eq!(price_cents(0.29), 29);
     assert_eq!(weight_grams(0.18), 180);
     assert!((margin_pct(150, 100) - 33.333).abs() < 0.01);
     println!(

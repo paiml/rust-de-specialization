@@ -3,7 +3,7 @@ lesson_id: "2.3.2"
 course_id: "c2-sqlite-rust"
 concept: "dump_restore_round_trip"
 description: >
-  Lesson 2.3.2 Playground Proof: dumping rows to INSERT statements and restoring them reproduces every row exactly. Expected stdout "dump: 3 rows round-tripped", exit 0.
+  Lesson 2.3.2 Playground Proof: dumping rows to INSERT statements, with single quotes doubled as SQLite does, and restoring them reproduces every row exactly, including names with commas and quotes. Expected stdout "dump: 4 rows round-tripped", exit 0.
 
 source:
   demo_crate: "c2-sqlite-rust"
@@ -18,7 +18,7 @@ proof:
   kind: runtime_assert
   expected_exit_status: 0
   expected_stdout_contains:
-    - "dump: 3 rows round-tripped"
+    - "dump: 4 rows round-tripped"
 
 invariants:
   - "compiles on stable channel"

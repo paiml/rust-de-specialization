@@ -3,7 +3,7 @@ lesson_id: "2.1.3"
 course_id: "c3-etl-pipelines"
 concept: "normalization_idempotent"
 description: >
-  Lesson 2.1.3 Playground Proof: normalizing a value twice gives the same result as normalizing it once. Expected stdout "normalize: idempotent", exit 0.
+  Lesson 2.1.3 Playground Proof: normalizing a name or a category twice gives the same result as normalizing it once. Expected stdout "normalize: idempotent", exit 0.
 
 source:
   demo_crate: "c3-etl-pipelines"
