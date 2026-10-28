@@ -1,0 +1,28 @@
+version: 1
+lesson_id: "1.2.1"
+course_id: "c3-etl-pipelines"
+concept: "garbage_row_does_not_abort"
+description: >
+  Lesson 1.2.1 Playground Proof: one garbage row is rejected with its row number while every other row still loads. Expected stdout "garbage row: 3 good, row 3 rejected", exit 0.
+
+source:
+  demo_crate: "c3-etl-pipelines"
+  demo_bin: "l121_garbage_row_does_not_abort"
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "garbage row: 3 good, row 3 rejected"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"

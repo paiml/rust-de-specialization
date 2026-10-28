@@ -1,0 +1,28 @@
+version: 1
+lesson_id: "1.2.4"
+course_id: "c2-sqlite-rust"
+concept: "in_memory_connections_are_isolated"
+description: >
+  Lesson 1.2.4 Playground Proof: each in-memory connection owns a private database, so rows inserted through one connection are invisible to a second. Expected stdout "in-memory: a=2 b=0", exit 0.
+
+source:
+  demo_crate: "c2-sqlite-rust"
+  demo_bin: "l124_in_memory_connections_are_isolated"
+
+playground:
+  channel: stable
+  mode: debug
+  edition: "2024"
+
+proof:
+  kind: runtime_assert
+  expected_exit_status: 0
+  expected_stdout_contains:
+    - "in-memory: a=2 b=0"
+
+invariants:
+  - "compiles on stable channel"
+  - "runs without panic"
+  - "contains no `unsafe` blocks"
+  - "uses only Playground-allowlisted crates (std only)"
+  - "source ≤ 5KB"
