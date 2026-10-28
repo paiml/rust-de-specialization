@@ -1,61 +1,35 @@
 {
   "version": 1,
-  "updated_at": "2026-04-22T11:37:31.489439488Z",
+  "updated_at": "2026-10-28T11:51:16.555874635Z",
   "entries": {
-    "2.3.2-playground": {
-      "contract_sha256": "a114a0590124643593edabc45a5770a83f5ad5c0c86a298bcd246da4a5292df4",
-      "code_sha256": "90ebadf99d3800fbd9ae6dcce45e22c4db8db109e5aa05e9016106379d15e7e9",
-      "gist_id": "b6626bbd41a71e75cb041bf05cc5ed3a",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=b6626bbd41a71e75cb041bf05cc5ed3a",
+    "2.1.2-playground": {
+      "contract_sha256": "7d086efbe4ce584e566307aa401f23272fffc34472d1fc40b626a64465d5f78c",
+      "code_sha256": "c659a32f32cc5c73d6eadd01171e1a72c9ad07217864bbce3d793b9a50cb7817",
+      "gist_id": "28b2a097309603161eba30ac232dde7b",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=28b2a097309603161eba30ac232dde7b",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-04-22T08:42:56.673066166Z",
+      "verified_at": "2026-10-28T11:51:16.555869968Z",
+      "outcome": "CompileFail",
+      "stderr_snapshot": "error[E0382]: borrow of moved value: `s`\n --> src/main.rs:4:20\n  |\n2 |     let s = String::from(\"hello\");\n  |         - move occurs because `s` has type `String`, which does not implement the `Copy` trait\n3 |     let t = s;\n  |             - value moved here\n4 |     println!(\"{}\", s);\n  |                    ^ value borrowed here after move\n  |\nhelp: consider cloning the value if the performance cost is acceptable\n  |\n3 |     let t = s.clone();\n  |              ++++++++\n\nFor more information about this error, try `rustc --explain E0382`.\nerror: could not compile `playground` (bin \"playground\") due to 1 previous error\n",
+      "proof_kind": "compile_fail",
+      "observed_error_codes": [
+        "E0382"
+      ]
+    },
+    "2.3.2-playground": {
+      "contract_sha256": "1685501180c530531831d8036ae67786ecdb2658b361e92bbe9cef322d0c76c9",
+      "code_sha256": "3236072ba39a57ee2a10714a5cec3de652fc08f4a0ca91d4e03246edc9541cf8",
+      "gist_id": "a9e4ceba7cd26227af5f38f7a712e395",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=a9e4ceba7cd26227af5f38f7a712e395",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T11:50:40.123442205Z",
       "outcome": "Success",
       "expected_exit_status": 0,
       "stdout_snapshot": "oracle: 4/4 equivalent\n",
-      "proof_kind": "runtime_assert"
-    },
-    "3.3.1-playground": {
-      "contract_sha256": "e7c86c1248202f4f9254b6bef62d6f334b7f8bdae881537c80e727b4d2360875",
-      "code_sha256": "69e8b795a4b465368d91580005426214a297d59b8cd3bd0006837d6bb4ce32be",
-      "gist_id": "a6adf7bf39a3facf1733875bd21e480d",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=a6adf7bf39a3facf1733875bd21e480d",
-      "channel": "stable",
-      "mode": "debug",
-      "edition": "2024",
-      "verified_at": "2026-04-22T11:37:24.980869107Z",
-      "outcome": "Success",
-      "expected_exit_status": 0,
-      "stdout_snapshot": "closures: 3/3 pass\n",
-      "proof_kind": "runtime_assert"
-    },
-    "3.3.2-playground": {
-      "contract_sha256": "0b899ac9a4b699dbd0298fb51cb05755b95931ea4349d184d952756f7f32cf29",
-      "code_sha256": "2a48ce206672acaec115b107468761a7714d0fac08be986897bccfb0c02d1c63",
-      "gist_id": "70f4efe0e1ace46e9973be2b228eaa69",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=70f4efe0e1ace46e9973be2b228eaa69",
-      "channel": "stable",
-      "mode": "debug",
-      "edition": "2024",
-      "verified_at": "2026-04-22T11:37:31.489435432Z",
-      "outcome": "Success",
-      "expected_exit_status": 0,
-      "stdout_snapshot": "iterators: 21/21 equivalent, lazy: ok\n",
-      "proof_kind": "runtime_assert"
-    },
-    "2.1.1-playground": {
-      "contract_sha256": "0846cf85734c2dd98017cc592acd68a8c5d95350c570a80032e0dc9359a54b9b",
-      "code_sha256": "7d775dea190019731b151280c072c43397348e45367e82f24771cd9481971847",
-      "gist_id": "5772eecaa527ef24d5794a0dc95b536a",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=5772eecaa527ef24d5794a0dc95b536a",
-      "channel": "stable",
-      "mode": "debug",
-      "edition": "2024",
-      "verified_at": "2026-04-22T11:37:19.368575197Z",
-      "outcome": "Success",
-      "expected_exit_status": 0,
-      "stdout_snapshot": "ownership: 3/3 pass\n",
       "proof_kind": "runtime_assert"
     },
     "1.1.1-playground": {
@@ -72,21 +46,47 @@
       "stdout_snapshot": "drops: 1\n",
       "proof_kind": "runtime_assert"
     },
-    "2.1.2-playground": {
-      "contract_sha256": "7b2cf6e13c991c73734a36ee1c375120aef944d2ac659da34f8a8b466b3b8b7c",
-      "code_sha256": "f8be5b9a4494ea20d95f076094e11048f1d60bee073a6d8599a99f40a6c8be45",
-      "gist_id": "eede4541b7569bea8a30afd1db4d8a20",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=eede4541b7569bea8a30afd1db4d8a20",
+    "3.3.2-playground": {
+      "contract_sha256": "0b899ac9a4b699dbd0298fb51cb05755b95931ea4349d184d952756f7f32cf29",
+      "code_sha256": "2a48ce206672acaec115b107468761a7714d0fac08be986897bccfb0c02d1c63",
+      "gist_id": "70f4efe0e1ace46e9973be2b228eaa69",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=70f4efe0e1ace46e9973be2b228eaa69",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-04-22T08:42:52.479578463Z",
-      "outcome": "CompileFail",
-      "stderr_snapshot": "error[E0382]: borrow of moved value: `s`\n --> src/main.rs:4:20\n  |\n2 |     let s = String::from(\"hello\");\n  |         - move occurs because `s` has type `String`, which does not implement the `Copy` trait\n3 |     let t = s;\n  |             - value moved here\n4 |     println!(\"{}\", s);\n  |                    ^ value borrowed here after move\n  |\nhelp: consider cloning the value if the performance cost is acceptable\n  |\n3 |     let t = s.clone();\n  |              ++++++++\n\nFor more information about this error, try `rustc --explain E0382`.\nerror: could not compile `playground` (bin \"playground\") due to 1 previous error\n",
-      "proof_kind": "compile_fail",
-      "observed_error_codes": [
-        "E0382"
-      ]
+      "verified_at": "2026-04-22T11:37:31.489435432Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "iterators: 21/21 equivalent, lazy: ok\n",
+      "proof_kind": "runtime_assert"
+    },
+    "3.3.1-playground": {
+      "contract_sha256": "e7c86c1248202f4f9254b6bef62d6f334b7f8bdae881537c80e727b4d2360875",
+      "code_sha256": "69e8b795a4b465368d91580005426214a297d59b8cd3bd0006837d6bb4ce32be",
+      "gist_id": "a6adf7bf39a3facf1733875bd21e480d",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=a6adf7bf39a3facf1733875bd21e480d",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-04-22T11:37:24.980869107Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "closures: 3/3 pass\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.1.1-playground": {
+      "contract_sha256": "8ee5c874730676b987e4d6b2f24d87f21a42b7c69bb35a327de3b131515e0f97",
+      "code_sha256": "cf38772a40b6f24b1876e3111f27ed75994e5a02694c7d7e9c662d16c251f9ef",
+      "gist_id": "32bd71a61cfa87984bac3963e26a9003",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=32bd71a61cfa87984bac3963e26a9003",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T11:50:36.580492883Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "ownership: 3/3 pass\n",
+      "proof_kind": "runtime_assert"
     }
   }
 }

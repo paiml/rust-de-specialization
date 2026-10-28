@@ -24,7 +24,7 @@ source:
         }
     }
 
-    fn parse_age(s: &str) -> Result<i32, AppError> {
+    fn parse_age(s: &'static str) -> Result<i32, AppError> {
         let n: i32 = s.parse()?;
         Ok(n)
     }
@@ -33,13 +33,13 @@ source:
         if d == 0 { Err(AppError::DivByZero) } else { Ok(n / d) }
     }
 
-    fn chain_question(s: &str, d: i32) -> Result<i32, AppError> {
+    fn chain_question(s: &'static str, d: i32) -> Result<i32, AppError> {
         let n = parse_age(s)?;
         let q = divide(n, d)?;
         Ok(q)
     }
 
-    fn chain_match(s: &str, d: i32) -> Result<i32, AppError> {
+    fn chain_match(s: &'static str, d: i32) -> Result<i32, AppError> {
         match parse_age(s) {
             Err(e) => Err(e),
             Ok(n) => match divide(n, d) {
