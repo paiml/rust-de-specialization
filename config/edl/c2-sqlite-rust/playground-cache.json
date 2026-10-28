@@ -1,19 +1,33 @@
 {
   "version": 1,
-  "updated_at": "2026-10-28T12:23:37.149819055Z",
+  "updated_at": "2026-10-28T12:26:35.791973790Z",
   "entries": {
-    "1.3.4-playground": {
-      "contract_sha256": "938f3add3dd8277231eaba18f13a5df9984946a668428063f22f6604b4ed33e8",
-      "code_sha256": "c91d93e320b2861583215d21ddb5f6af9a2ba9401c9da6acfded73330cabc5cf",
-      "gist_id": "ff31cfae13905c453162f81792c52c30",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=ff31cfae13905c453162f81792c52c30",
+    "1.3.2-playground": {
+      "contract_sha256": "979ec10c046d2a7e31d3497656f5c87baa10ca8518f707ebb431d9a335c0c0d3",
+      "code_sha256": "3d60ae30049f3d2c2fdd9691d8fd9417acfe687cef27d984ad6370d160753202",
+      "gist_id": "3e076846ff59875b10df4e23d5abc178",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=3e076846ff59875b10df4e23d5abc178",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-10-28T12:23:30.648065407Z",
+      "verified_at": "2026-10-28T12:16:09.904681045Z",
       "outcome": "Success",
       "expected_exit_status": 0,
-      "stdout_snapshot": "transaction: rolled back, 2 rows committed\n",
+      "stdout_snapshot": "errors: duplicate fruit name: apple\n",
+      "proof_kind": "runtime_assert"
+    },
+    "1.2.4-playground": {
+      "contract_sha256": "52dcdf67e55c1fedb8ee1a5195be56176f01d239607943a1b8bb3346eba9bb95",
+      "code_sha256": "53ba2ade0cd09de81bf3c92010c5ede608338de9cb4fa60151cdcd4317afea56",
+      "gist_id": "43ccc18e9889bca619fd8823b5029f37",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=43ccc18e9889bca619fd8823b5029f37",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:15:57.286613026Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "in-memory: a=2 b=0\n",
       "proof_kind": "runtime_assert"
     },
     "1.2.5-playground": {
@@ -30,29 +44,29 @@
       "stdout_snapshot": "crud: insert, read, update, delete ok\n",
       "proof_kind": "runtime_assert"
     },
-    "1.3.2-playground": {
-      "contract_sha256": "979ec10c046d2a7e31d3497656f5c87baa10ca8518f707ebb431d9a335c0c0d3",
-      "code_sha256": "3d60ae30049f3d2c2fdd9691d8fd9417acfe687cef27d984ad6370d160753202",
-      "gist_id": "3e076846ff59875b10df4e23d5abc178",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=3e076846ff59875b10df4e23d5abc178",
+    "1.3.4-playground": {
+      "contract_sha256": "938f3add3dd8277231eaba18f13a5df9984946a668428063f22f6604b4ed33e8",
+      "code_sha256": "c91d93e320b2861583215d21ddb5f6af9a2ba9401c9da6acfded73330cabc5cf",
+      "gist_id": "ff31cfae13905c453162f81792c52c30",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=ff31cfae13905c453162f81792c52c30",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-10-28T12:16:09.904681045Z",
+      "verified_at": "2026-10-28T12:23:30.648065407Z",
       "outcome": "Success",
       "expected_exit_status": 0,
-      "stdout_snapshot": "errors: duplicate fruit name: apple\n",
+      "stdout_snapshot": "transaction: rolled back, 2 rows committed\n",
       "proof_kind": "runtime_assert"
     },
     "2.3.2-playground": {
       "contract_sha256": "a1acdfd903e2efc33ee9c2abecd429b4d15e886d15794f7df0c6fd6e3e0ba61d",
-      "code_sha256": "6e19ed8eb20e4b53b0640093cac4650480f122826c74ffc7eec787965519b9fe",
-      "gist_id": "c73fafb02d084dab7401bfc03cf82a2c",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=c73fafb02d084dab7401bfc03cf82a2c",
+      "code_sha256": "688af74ea537e2f8b5cea1f2901a703548a02bcd81c40934c0edf61fb554a4a3",
+      "gist_id": "d3f15698ee7be40270f1e1552fd53308",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=d3f15698ee7be40270f1e1552fd53308",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-10-28T12:23:37.149814047Z",
+      "verified_at": "2026-10-28T12:26:35.791968051Z",
       "outcome": "Success",
       "expected_exit_status": 0,
       "stdout_snapshot": "dump: 4 rows round-tripped\n",
@@ -70,20 +84,6 @@
       "outcome": "Success",
       "expected_exit_status": 0,
       "stdout_snapshot": "csv: 2 parsed, 1 rejected\n",
-      "proof_kind": "runtime_assert"
-    },
-    "1.2.4-playground": {
-      "contract_sha256": "52dcdf67e55c1fedb8ee1a5195be56176f01d239607943a1b8bb3346eba9bb95",
-      "code_sha256": "53ba2ade0cd09de81bf3c92010c5ede608338de9cb4fa60151cdcd4317afea56",
-      "gist_id": "43ccc18e9889bca619fd8823b5029f37",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=43ccc18e9889bca619fd8823b5029f37",
-      "channel": "stable",
-      "mode": "debug",
-      "edition": "2024",
-      "verified_at": "2026-10-28T12:15:57.286613026Z",
-      "outcome": "Success",
-      "expected_exit_status": 0,
-      "stdout_snapshot": "in-memory: a=2 b=0\n",
       "proof_kind": "runtime_assert"
     }
   }

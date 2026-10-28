@@ -46,5 +46,7 @@ fn main() {
         .collect();
     assert_eq!(back, expected, "dump then restore must reproduce every row");
     assert_eq!(script.lines().count(), rows.len());
+    // The quote inside o'brien must be doubled, as SQLite requires.
+    assert!(script.contains("'o''brien plum'"));
     println!("dump: {} rows round-tripped", back.len());
 }

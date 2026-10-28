@@ -369,11 +369,13 @@ fn main() {
         .collect();
     assert_eq!(back, expected, "dump then restore must reproduce every row");
     assert_eq!(script.lines().count(), rows.len());
+    // The quote inside o'brien must be doubled, as SQLite requires.
+    assert!(script.contains("'o''brien plum'"));
     println!("dump: {} rows round-tripped", back.len());
 }
 ```
 
-▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=c73fafb02d084dab7401bfc03cf82a2c>
+▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=d3f15698ee7be40270f1e1552fd53308>
 
 Expected output contains: `dump: 4 rows round-tripped`
 

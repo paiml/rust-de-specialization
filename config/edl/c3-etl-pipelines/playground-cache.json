@@ -1,47 +1,19 @@
 {
   "version": 1,
-  "updated_at": "2026-10-28T12:23:50.437148898Z",
+  "updated_at": "2026-10-28T12:26:42.227862959Z",
   "entries": {
-    "2.1.3-playground": {
-      "contract_sha256": "8046b4e031ff0423fed280d731b1399186089c56b30e2e66f4bb5e5e4f83eac3",
-      "code_sha256": "a50cb05992abaaaf9f78d7ca5a306302dbeedd7a35345beaddba55101817da86",
-      "gist_id": "a3856061d2c232ebc21ceeaf9b45d19a",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=a3856061d2c232ebc21ceeaf9b45d19a",
-      "channel": "stable",
-      "mode": "debug",
-      "edition": "2024",
-      "verified_at": "2026-10-28T12:23:43.749736647Z",
-      "outcome": "Success",
-      "expected_exit_status": 0,
-      "stdout_snapshot": "normalize: idempotent\n",
-      "proof_kind": "runtime_assert"
-    },
     "2.2.1-playground": {
       "contract_sha256": "be281e71d7327ddfaf91d0d804c54025f984037f7a72404f6a5d64902839dc13",
-      "code_sha256": "c6eb0d413e80fad1d5195f2ae8151d9d4e31d26e5363e53d4be3c8680e8f72c7",
-      "gist_id": "e5c50c30e684e59e5746c48379e939b6",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=e5c50c30e684e59e5746c48379e939b6",
+      "code_sha256": "ab6dbbd57e94112a51f0d3cd9aeddb25aa40e99898d2be371525f2f4a4e18b40",
+      "gist_id": "bceee7aa2df2eb05a592fed71b13cc54",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=bceee7aa2df2eb05a592fed71b13cc54",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-10-28T12:23:50.437133514Z",
+      "verified_at": "2026-10-28T12:26:42.227857551Z",
       "outcome": "Success",
       "expected_exit_status": 0,
       "stdout_snapshot": "computed columns: 150 cents, 120 g\n",
-      "proof_kind": "runtime_assert"
-    },
-    "2.1.1-playground": {
-      "contract_sha256": "d1724af095ae2315b8d4dbe7b65af796c1efe20b6b764556cb89d709151565c6",
-      "code_sha256": "26a4d030d832ab4970344447e3f793537e64bd6354875e92fe1512bd62063c4f",
-      "gist_id": "2b1a1c42a47266c97cf0976a56390a21",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=2b1a1c42a47266c97cf0976a56390a21",
-      "channel": "stable",
-      "mode": "debug",
-      "edition": "2024",
-      "verified_at": "2026-10-28T12:16:48.947852889Z",
-      "outcome": "Success",
-      "expected_exit_status": 0,
-      "stdout_snapshot": "totality: 3 + 3 = 6\n",
       "proof_kind": "runtime_assert"
     },
     "1.2.3-playground": {
@@ -58,18 +30,18 @@
       "stdout_snapshot": "read trait: 3 rows from both sources\n",
       "proof_kind": "runtime_assert"
     },
-    "2.1.2-playground": {
-      "contract_sha256": "5c3272a27e3a571055d42bfb86566b155bcaec69d35a4de5dcfedbd4eca2afba",
-      "code_sha256": "e3b0219b084538d0cb8824f18d15cf51a2f8016648c9b67a1fd608b7c6809243",
-      "gist_id": "038c9d725d1f849d0d2cb27833237c69",
-      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=038c9d725d1f849d0d2cb27833237c69",
+    "2.1.3-playground": {
+      "contract_sha256": "8046b4e031ff0423fed280d731b1399186089c56b30e2e66f4bb5e5e4f83eac3",
+      "code_sha256": "a50cb05992abaaaf9f78d7ca5a306302dbeedd7a35345beaddba55101817da86",
+      "gist_id": "a3856061d2c232ebc21ceeaf9b45d19a",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=a3856061d2c232ebc21ceeaf9b45d19a",
       "channel": "stable",
       "mode": "debug",
       "edition": "2024",
-      "verified_at": "2026-10-28T12:16:55.288052506Z",
+      "verified_at": "2026-10-28T12:23:43.749736647Z",
       "outcome": "Success",
       "expected_exit_status": 0,
-      "stdout_snapshot": "validation: all defects reported per row\n",
+      "stdout_snapshot": "normalize: idempotent\n",
       "proof_kind": "runtime_assert"
     },
     "1.2.1-playground": {
@@ -84,6 +56,34 @@
       "outcome": "Success",
       "expected_exit_status": 0,
       "stdout_snapshot": "garbage row: 3 good, row 3 rejected\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.1.1-playground": {
+      "contract_sha256": "d1724af095ae2315b8d4dbe7b65af796c1efe20b6b764556cb89d709151565c6",
+      "code_sha256": "26a4d030d832ab4970344447e3f793537e64bd6354875e92fe1512bd62063c4f",
+      "gist_id": "2b1a1c42a47266c97cf0976a56390a21",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=2b1a1c42a47266c97cf0976a56390a21",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:16:48.947852889Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "totality: 3 + 3 = 6\n",
+      "proof_kind": "runtime_assert"
+    },
+    "2.1.2-playground": {
+      "contract_sha256": "5c3272a27e3a571055d42bfb86566b155bcaec69d35a4de5dcfedbd4eca2afba",
+      "code_sha256": "e3b0219b084538d0cb8824f18d15cf51a2f8016648c9b67a1fd608b7c6809243",
+      "gist_id": "038c9d725d1f849d0d2cb27833237c69",
+      "share_url": "https://play.rust-lang.org/?channel=stable&mode=debug&edition=2024&gist=038c9d725d1f849d0d2cb27833237c69",
+      "channel": "stable",
+      "mode": "debug",
+      "edition": "2024",
+      "verified_at": "2026-10-28T12:16:55.288052506Z",
+      "outcome": "Success",
+      "expected_exit_status": 0,
+      "stdout_snapshot": "validation: all defects reported per row\n",
       "proof_kind": "runtime_assert"
     }
   }

@@ -247,6 +247,8 @@ fn main() {
     // 0.29 * 100 is 28.999999999999996: truncating would give 28, rounding gives 29.
     assert_eq!(price_cents(0.29), 29);
     assert_eq!(weight_grams(0.18), 180);
+    // 1.005 * 1000 is 1004.9999999999999: truncating would give 1004.
+    assert_eq!(weight_grams(1.005), 1005);
     assert!((margin_pct(150, 100) - 33.333).abs() < 0.01);
     println!(
         "computed columns: {} cents, {} g",
@@ -256,7 +258,7 @@ fn main() {
 }
 ```
 
-▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=e5c50c30e684e59e5746c48379e939b6>
+▶ Run on Playground: <https://play.rust-lang.org/?version=stable&mode=debug&edition=2024&gist=bceee7aa2df2eb05a592fed71b13cc54>
 
 Expected output contains: `computed columns: 150 cents, 120 g`
 
